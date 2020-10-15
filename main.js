@@ -45,10 +45,12 @@ function set_last_month(month) {
 function add_month(evt) {
   evt.preventDefault();			// or we'll try to GET/POST the Form...
   //if (!elemMonthValue.checkValidity()) return false;
-  console.debug ('Adding month', elemMonthValue.value);
-  set_last_month(elemMonthValue.value);
   var months = get_months();
-  months.push(elemMonthValue.value);
+  var v=elemMonthValue.value;
+  if (months.includes(v)) return false;	// do not allow duplicates
+  console.debug ('Adding month', v);
+  set_last_month(v);
+  months.push(v);
   set_months(months);
   /* clear field and prepare to enter new value */
   elemMonthValue.value = '';
