@@ -1,0 +1,21 @@
+{
+    "name": "Hours time tracker PWA",
+    "short_name": "Hours",
+    "lang": "en",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#4285f4",
+    "icons": [{
+            "src": "hours-64.png",
+            "sizes": "64x64"
+        },
+        {
+            "src": "hours-128.png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "hours-512.png",
+            "sizes": "512x512"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+- docs - it keeps data locally only
+- add option for export/import data
+- option to refresh, but run offline-first
+- better icons
+- htaccess caching permanent for icons and version resorces etc.
+- HTML/CSS/JS validate
+- JS strict mode?
+
+- add / rename / delete months
+- select current month
+
+- in current month:
+  - add event
+	- set start time = now, end time= now
+	- jump to edit event
+
+  - edit event (with update, cancel and delete inside)
+	- update start time
+	- update end time
+	- update breaks
+	- update in which month it is
+	- UPDATE / CANCEL / DELETE buttons (disable CANCEL if new event)
+
+- show totals for current month (with and w/o breaks)

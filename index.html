@@ -1,5 +1,5 @@
-hello, hours
-
+<!DOCTYPE html>
+<html lang="en">
 <!--
     Hours - simple time tracking PWA, inspired by PalmOS hours.prc
     Copyright (C) 2020 Matija Nalis <mnalis-git@voyager.hr>
@@ -17,3 +17,31 @@ hello, hours
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hours</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" sizes="128x128" href="hours-128.png">
+    <meta name="theme-color" content="#4285f4">
+    <meta name="application-name" content="Hours">
+    <meta name="apple-mobile-web-app-title" content="Hours">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/index.html">
+</head>
+
+<body>
+    <h1>Hours</h1>
+
+    <form>
+        <input type="text" id="month_input" name="month_input" required size=8 placeholder="YYYY-MM" pattern="[0-9]{4}-[0-9]{2}" minlength="7" maxlength="7">
+        <input type="submit" id="add_month" value="Add month">
+    </form>
+
+</body>
+
+</html>
