@@ -7,6 +7,7 @@
 - JS strict mode?
 
 - add / rename / delete months
+	- add month prevent adding duplicate
 - select current month
 
 - in current month:

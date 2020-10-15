@@ -17,7 +17,8 @@
 */
 
 const elemMonthValue = document.getElementById('month_input');
-const elemAddMonth = document.getElementById('add_month');
+const elemFormMonth = document.getElementById('form_month');
+const elemMonthList = document.getElementById('month_list');
 
 const KEY_MONTHS='MONTHS';
 const KEY_LASTMONTH='LASTMONTH';
@@ -25,9 +26,13 @@ const KEY_LASTMONTH='LASTMONTH';
 
 /* show list of months in DB */
 function showMonths() {
-  const months = localStorage.getItem(KEY_MONTHS);
-  console.log ('showMonths:', months);
-  
+  const months = get_months().sort();
+  console.debug ('showMonths:', months);
+  monthList = '';
+  for (var i = 0, month; month = months[i]; i++) {
+    monthList += '<li>' + month + '</li>';
+  }
+  elemMonthList.innerHTML = monthList;
 }
 
 
@@ -37,22 +42,46 @@ function set_last_month(month) {
 }
 
 /* add new month to DB */
-function add_month() {
+function add_month(evt) {
+  evt.preventDefault();			// or we'll try to GET/POST the Form...
   //if (!elemMonthValue.checkValidity()) return false;
+  console.debug ('Adding month', elemMonthValue.value);
   set_last_month(elemMonthValue.value);
-  return addToDB(KEY_MONTHS, elemMonthValue.value);
+  var months = get_months();
+  months.push(elemMonthValue.value);
+  set_months(months);
+  /* clear field and prepare to enter new value */
+  elemMonthValue.value = '';
+  elemMonthValue.focus();
+  return false;
+}
+
+/* return array of months from DB */
+function get_months() {
+  return JSON.parse(getFromDB(KEY_MONTHS)) || [];
+}
+
+/* save array of months to DB */
+function set_months(months) {
+  return addToDB(KEY_MONTHS, JSON.stringify(months));
+}
+
+/* Returns value from Local Storage */
+function getFromDB(key) {
+  return localStorage.getItem(key);
 }
 
 /* Add to Local Storage, with error handling */
 function addToDB(key, val) {
   try {
-    console.debug('addToDB', key, '=', val);
+    //console.debug('addToDB', key, '=', val);
     localStorage.setItem(key, val);
   } catch (ex) {
     console.error(`*** LocalStorage: '${ex.name}' ***`, ex);
     alert('Oops: Error writing to LocalStorage, check console.');
     return false;
   }
+  showMonths();
 }
 
 
@@ -62,7 +91,7 @@ function addToDB(key, val) {
  */
 
 /* init input field handlers */
-elemAddMonth.addEventListener('submit', add_month);
+elemFormMonth.addEventListener('submit', add_month, false);
  
 /* try to enable persistent storage */
 if (navigator.storage && navigator.storage.persist) {
@@ -76,7 +105,7 @@ if (navigator.storage && navigator.storage.persist) {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 } else {
-  console.error("ABORT: service workers not supported");
+  console.error('ABORT: service workers not supported');
 }
 
 /* show current list of months on startup */

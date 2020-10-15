@@ -34,13 +34,12 @@ self.addEventListener('install', async function() {
     ])
 })
 
-/* FIXME what does activate do? */
 self.addEventListener('activate', function(e) {
     console.log('[ServiceWorker] Activate');
     return self.clients.claim();
 });
 
 self.addEventListener('fetch', function(e) {
-    console.log('[Service Worker] Fetch', e.request.url);
+    console.log('[ServiceWorker] Fetch', e.request.url);
     e.respondWith(fetch(e.request));
 });

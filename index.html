@@ -37,10 +37,17 @@
 <body>
     <h1>Hours</h1>
 
-    <form>
-        <input type="text" id="month_input" name="month_input" required size=8 placeholder="YYYY-MM" pattern="[0-9]{4}-[0-9]{2}" minlength="7" maxlength="7">
-        <input type="submit" id="add_month" value="Add month">
-    </form>
+    <div id="months">
+        <form id="form_month">
+            <input type="text" id="month_input" name="month_input" required size=8 placeholder="YYYY-MM" pattern="[0-9]{4}-[0-9]{2}" minlength="7" maxlength="7">
+            <input type="submit" value="Add month">
+        </form>
+        <p>
+        Months:
+        <ul id="month_list" title="List of months">
+        </ul>
+        </p>
+    </div>
 
 </body>
 
