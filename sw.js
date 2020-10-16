@@ -16,30 +16,49 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const CACHE_NAME = "V1"
+'use strict';
+
+const CACHE_ID = "Hours-v1";
 
 /**
  * The install event is fired when the registration succeeds. 
- * After the install step, the browser tries to activate the service worker.
- * Generally, we cache static resources that allow the website to run offline
+ * cache all needed static resources so we can run offline
  */
-self.addEventListener('install', async function() {
-    console.log('[ServiceWorker] Install');
-    //  self.skipWaiting();
-    const cache = await caches.open(CACHE_NAME);
-    cache.addAll([
-        'index.html',
-        'main.css',
-        'main.js',
-    ])
-})
 
-self.addEventListener('activate', function(e) {
+self.addEventListener('install', function(event) {
+  console.log('[ServiceWorker] Install');
+  event.waitUntil(
+    caches.open(CACHE_ID).then(function (cache) {
+      return cache.addAll(
+        [
+            '/index.html',
+            '/main.css',
+            '/main.js',
+        ]
+      );
+    })
+  );
+});
+
+/* once a new Service Worker has installed and a previous version isn't being used, the new one activates, and we get an activate event */
+self.addEventListener('activate', function(event) {
     console.log('[ServiceWorker] Activate');
     return self.clients.claim();
 });
 
-self.addEventListener('fetch', function(e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
-    e.respondWith(fetch(e.request));
+/* try cache first: if cache is missing, fall back to network (and put response in cache) */
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.open(CACHE_ID).then(function (cache) {
+      return cache.match(event.request).then(function (response) {
+        return (
+          response ||
+          fetch(event.request).then(function (response) {
+            cache.put(event.request, response.clone());
+            return response;
+          })
+        );
+      });
+    }),
+  );
 });

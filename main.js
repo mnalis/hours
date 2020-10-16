@@ -16,19 +16,21 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+'use strict';
+
 const elemMonthValue = document.getElementById('month_input');
 const elemFormMonth = document.getElementById('form_month');
 const elemMonthList = document.getElementById('month_list');
 
-const KEY_MONTHS='MONTHS';
-const KEY_LASTMONTH='LASTMONTH';
+const KEY_MONTHS='_MONTHS';
+const KEY_LASTMONTH='_LASTMONTH';
 
 
 /* show list of months in DB */
 function showMonths() {
   const months = get_months().sort();
   console.debug ('showMonths:', months);
-  monthList = '';
+  var monthList = '';
   for (var i = 0, month; month = months[i]; i++) {
     monthList += '<li>' + month + '</li>';
   }
@@ -105,7 +107,7 @@ if (navigator.storage && navigator.storage.persist) {
 
 /* register Service Worker */
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+  navigator.serviceWorker.register('/sw.js');
 } else {
   console.error('ABORT: service workers not supported');
 }
