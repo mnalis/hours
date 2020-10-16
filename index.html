@@ -32,6 +32,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="msapplication-starturl" content="/index.html">
+    <meta name="description" content="Hours - simple work time tracking PWA">
 </head>
 
 <body>
@@ -39,13 +40,14 @@
 
     <div id="months">
         <form id="form_month">
+            <label for="month_input">New month category:</label>
             <input type="text" id="month_input" name="month_input" required size=8 placeholder="YYYY-MM" pattern="[0-9]{4}-[0-9]{2}" minlength="7" maxlength="7">
             <input type="submit" value="Add month">
         </form>
         <p>
-        Months:
-        <ul id="month_list" title="List of months">
-        </ul>
+        <label for="month_list">Choose month</label>
+        <select id="month_list" title="Choose month category">
+        </select>
         </p>
     </div>
 
