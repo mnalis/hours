@@ -5,21 +5,22 @@
 - better icons
 - htaccess caching permanent for icons and version resorces etc.
 - HTML/CSS/JS validate
-- JS strict mode?
 - README.md live instance link, and mention on https://mnalis.com/
 - test in Chromium Lighthouse
   - TypeError: Failed to execute 'fetch' on 'WorkerGlobalScope': 'only-if-cached' can be set only with 'same-origin' mode at https://hours.mnalis.com/sw.js:56:11
+	Chromium bug, has workaround - see https://stackoverflow.com/a/49719964/2600099
   - Does not provide a valid apple-touch-icon - https://web.dev/apple-touch-icon/?utm_source=lighthouse&utm_medium=devtools
   - HTTP/2 enable ?
-  - add robots.txt
+  - add robots.txt ?
   - Error while trying to use the following icon from the Manifest: https://hours.mnalis.com/hours-512.png (Download error or resource isn't a valid image)  ??
 - offer install: https://web.dev/customize-install/
-- split to multiple .js files (main, db, months, tasks) for readability (and precache all of them!). need copyright in all of them :( also 'part of Hours (c)....' and above explanation of that module
+- split to multiple .js files (+main, +db, +months, -tasks) for readability (and precache all of them!). need copyright in all of them :( also 'part of Hours (c)....' and above explanation of that module
 
-- add / rename / delete months
-- select current month
+- +add / -rename / -delete months
++ select current month
 
 - in current month:
+  - display current month (just to be sure "select onupdate" is working OK)
   - add event
 	- set start time = now, end time= now
 	- jump to edit event
