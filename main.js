@@ -47,7 +47,7 @@ function add_month(evt) {
   //if (!elemMonthValue.checkValidity()) return false;
   var months = get_months();
   var v=elemMonthValue.value;
-  if (months.includes(v)) return false;	// do not allow duplicates
+  if (months.indexOf(v) > -1) return false;	// do not allow duplicates
   console.debug ('Adding month', v);
   set_last_month(v);
   months.push(v);

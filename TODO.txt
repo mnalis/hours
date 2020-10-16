@@ -5,6 +5,7 @@
 - htaccess caching permanent for icons and version resorces etc.
 - HTML/CSS/JS validate
 - JS strict mode?
+- README.md live instance link, and mention on https://mnalis.com/
 
 - add / rename / delete months
 - select current month
