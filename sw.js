@@ -1,5 +1,7 @@
 /*
-    Hours - simple time tracking PWA, inspired by PalmOS hours.prc
+    Module: Service Worker, to provide offline caching
+
+    part of: Hours - simple time tracking PWA, inspired by PalmOS hours.prc
     Copyright (C) 2020 Matija Nalis <mnalis-git@voyager.hr>
 
     This program is free software: you can redistribute it and/or modify
@@ -32,6 +34,8 @@ self.addEventListener('install', function(event) {
       return cache.addAll(
         [
             '/index.html',
+            '/db.js',
+            '/months.js',
             '/main.css',
             '/main.js',
         ]

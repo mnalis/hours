@@ -1,5 +1,7 @@
 /*
-    Hours - simple time tracking PWA, inspired by PalmOS hours.prc
+    Module: main app loader
+
+    part of: Hours - simple time tracking PWA, inspired by PalmOS hours.prc
     Copyright (C) 2020 Matija Nalis <mnalis-git@voyager.hr>
 
     This program is free software: you can redistribute it and/or modify
@@ -18,95 +20,13 @@
 
 'use strict';
 
-const elemMonthValue = document.getElementById('month_input');
-const elemFormMonth = document.getElementById('form_month');
-const elemMonthList = document.getElementById('month_list');
-
-const KEY_MONTHS='_MONTHS';
-const KEY_LASTMONTH='_LASTMONTH';
-
-
-/* show list of months in DB */
-function showMonths() {
-  const months = get_months().sort().reverse();
-  const last_used = get_default_month();
-  console.debug ('showMonths:', months, 'last:', last_used);
-  let monthList = '';
-  for (let i = 0, month; month = months[i]; i++) {
-    const selected = (month === last_used) ? ' selected' : '';
-    monthList += '<option value="' + month + '"' + selected + '>' + month + '</option>';
-  }
-  elemMonthList.innerHTML = monthList;
-}
-
-
-/* set default month to use */
-function set_default_month(month) {
-  return addToDB(KEY_LASTMONTH, month);
-}
-/* returns default month to use */
-function get_default_month() {
-   return getFromDB(KEY_LASTMONTH);
-}
-
-/* add new month to DB */
-function add_month(evt) {
-  evt.preventDefault();			// or we'll try to GET/POST the Form...
-  //if (!elemMonthValue.checkValidity()) return false;
-  let months = get_months();
-  const m=elemMonthValue.value;
-  if (months.indexOf(m) > -1) return false;	// do not allow duplicates
-  console.debug ('Adding month', m);
-  months.push(m);
-  set_months(months);
-  set_default_month(m);
-  /* clear field and prepare to enter new value */
-  elemMonthValue.value = '';
-  elemMonthValue.focus();
-  return false;
-}
-
-/* return array of months from DB */
-function get_months() {
-  return JSON.parse(getFromDB(KEY_MONTHS)) || [];
-}
-
-/* save array of months to DB */
-function set_months(months) {
-  return addToDB(KEY_MONTHS, JSON.stringify(months));
-}
-
-/* Returns value from Local Storage */
-function getFromDB(key) {
-  return localStorage.getItem(key);
-}
-
-/* Add to Local Storage, with error handling */
-function addToDB(key, val) {
-  try {
-    //console.debug('addToDB', key, '=', val);
-    localStorage.setItem(key, val);
-  } catch (ex) {
-    console.error(`*** LocalStorage: '${ex.name}' ***`, ex);
-    alert('Oops: Error writing to LocalStorage, check console.');
-    return false;
-  }
-  showMonths();
-}
-
-
-
-/*
- * MAIN
- */
-
 /* init input field handlers */
 elemFormMonth.addEventListener('submit', add_month, false);
  
 /* try to enable persistent storage */
 if (navigator.storage && navigator.storage.persist) {
   navigator.storage.persist().then((val) => {
-    console.log('has persistent storage', val);
+    console.log('has persistent storage:', val);
   });
 }
 
