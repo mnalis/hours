@@ -40,7 +40,8 @@
 <body>
     <h1>Hours</h1>
 
-    <div id="months">
+    <section id="sec_months">
+        <h2>Months editor</h2>
         <form id="form_month">
             <label for="month_input">New month category:</label>
             <input type="text" id="month_input" name="month_input" required size=8 placeholder="YYYY-MM" pattern="[0-9]{4}-[0-9]{2}" minlength="7" maxlength="7">
@@ -54,7 +55,10 @@
         <p>
         Selected month: <span id="selected_month">UNKNOWN</span>
         </p>
-    </div>
+    </section>
+
+    <section id="sec_details">
+    </section>
 
 </body>
 
