@@ -3,6 +3,7 @@
 <!--
     Hours - simple time tracking PWA, inspired by PalmOS hours.prc
     Copyright (C) 2020 Matija Nalis <mnalis-git@voyager.hr>
+    Copyright (C) 2020 Ksenija Kulic & Marin Klojber
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
@@ -58,6 +59,38 @@
     </section>
 
     <section id="sec_details">
+        <h2>Details</h2>
+                <div id="date">
+                        <form action="/action_page.php">
+                                <li>
+                                        <label for="date_time">Date</label>
+                                                <input type="text" id="date_time" name="Date" placeholder="date">
+                                </li>
+                                <li>
+                                        <label for="begin_time">Begin</label>
+                                                 <input type="text" id="begin_time" name="Begin" placeholder="begin">
+                                </li>
+                                <li>
+                                        <label for="end_time">End</label>
+                                                <input type="text" id="end_time" name="End" placeholder="end">
+                                </li>
+                                <li>
+                                        <label for="breaktime">Break</label>
+                                                <input type="text" id="break_time" name="Break" placeholder="break">
+                                </li>
+                                <li>
+                                        <label for="subject">Subject</label>
+                                                <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+                                </li>
+                        </form>
+                </div>
+
+
+                <div id="button">
+                        <input type="submit" value="Done">
+                        <button type="button">Delete</button>
+                </div>
+
     </section>
 
 </body>
