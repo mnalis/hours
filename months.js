@@ -23,6 +23,7 @@
 const elemMonthValue = document.getElementById('month_input');
 const elemFormMonth = document.getElementById('form_month');
 const elemMonthList = document.getElementById('month_list');
+const elemSelectedMonth = document.getElementById('selected_month');
 
 
 /* show list of months in DB */
@@ -55,4 +56,10 @@ function add_month(evt) {
   elemMonthValue.value = '';
   elemMonthValue.focus();
   return false;
+}
+
+
+/* select new default month */
+function change_default_month() {
+  elemSelectedMonth.innerHTML = elemMonthList.value;
 }

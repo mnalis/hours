@@ -22,6 +22,7 @@
 
 /* init input field handlers */
 elemFormMonth.addEventListener('submit', add_month, false);
+elemMonthList.addEventListener('change', change_default_month);
  
 /* try to enable persistent storage */
 if (navigator.storage && navigator.storage.persist) {
