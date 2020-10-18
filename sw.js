@@ -35,9 +35,11 @@ self.addEventListener('install', function(event) {
         [
             '/index.html',
             '/db.js',
+            '/details.js',
+            '/list.js',
             '/months.js',
-            '/main.css',
             '/main.js',
+            '/main.css',
         ]
       );
     })

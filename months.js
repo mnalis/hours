@@ -26,17 +26,22 @@ const elemMonthList = document.getElementById('month_list');
 const elemSelectedMonth = document.getElementById('selected_month');
 
 
-/* show list of months in DB */
-function showMonths() {
+/* build a droplist of months with selected default_month */
+function build_months_list(default_month) {
   const months = get_months_DB().sort().reverse();
-  const last_used = get_default_month_DB();
-  console.debug ('showMonths:', months, 'last:', last_used);
+  console.debug ('build_months_list:', months, 'default:', default_month);
   let monthList = '';
   for (let i = 0, month; month = months[i]; i++) {
-    const selected = (month === last_used) ? ' selected' : '';
+    const selected = (month === default_month) ? ' selected' : '';
     monthList += '<option value="' + month + '"' + selected + '>' + month + '</option>';
   }
-  elemMonthList.innerHTML = monthList;
+  return monthList;
+}
+
+/* show list of months in DB */
+function showMonths() {
+  const last_used = get_default_month_DB();
+  elemMonthList.innerHTML = build_months_list(last_used);
 }
 
 

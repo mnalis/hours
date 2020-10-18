@@ -15,6 +15,9 @@
   - Error while trying to use the following icon from the Manifest: https://hours.mnalis.com/hours-512.png (Download error or resource isn't a valid image)  ??
 - offer install: https://web.dev/customize-install/
 - split to multiple .js files (+main, +db, +months, -tasks) for readability (and precache all of them!). need copyright in all of them :( also 'part of Hours (c)....' and above explanation of that module
+- special button to install App, not automatically on page load
+- automatically upgrade / erase cache on app update (refresh)
+	maybe "cache, then network/save_to_cache strategy" ?
 
 - on month change, and on page load, update (and) default_month
 
