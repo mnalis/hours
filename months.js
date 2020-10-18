@@ -66,7 +66,10 @@ function add_month(evt) {
 
 /* select new default month, and update display */
 function change_default_month() {
-  const m = elemMonthList.value;
+  const m = elemMonthList.value;	/* selected element in list */
+  if (!m) return;
+  console.debug('chaning default month to', m);
   elemSelectedMonth.innerHTML = m;
   set_default_month_DB(m);
+  return show_list(m);
 }

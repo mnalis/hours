@@ -55,28 +55,22 @@
         <select id="month_list" title="Choose month category">
         </select>
         </p>
-        <p>
-        Selected month: <span id="selected_month">UNKNOWN</span>
-        </p>
     </section>
 
     <section id="sec_list">
          <table>
-                <caption>xxxx sati</caption>
-                <tr>
-                        <th>DATUM</th>
-                        <th>OD</th>
-                        <th>DO</th>
-                        <th>ODRADJENO</th>
-                        <th>NOTES</th>
-                </tr>
-                <tr>
-                        <td>20200925</td>
-                        <td>15:00</td>
-                        <td>17:00</td>
-                        <td>3:00</td>
-                        <td>example</>
-                </tr>
+                <caption>Category <span id="selected_month">UNKNOWN</span></caption>
+                <thead>
+                    <tr>
+                            <th>Date</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Worked</th>
+                            <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+                </tbody>
          </table>
          <button type="button">New</button>
          <button type="button">Total</button>

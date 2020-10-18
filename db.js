@@ -22,6 +22,7 @@
 
 const KEY_MONTHS='_MONTHS';
 const KEY_LASTMONTH='_LASTMONTH';
+const KEY_MONTH_PREFIX='_M_';
 
 
 /* Returns value from Local Storage */
@@ -60,4 +61,15 @@ function get_months_DB() {
 /* save array of months to DB */
 function set_months_DB(months) {
   return addToDB(KEY_MONTHS, JSON.stringify(months));
+}
+
+
+/* return array of tasks for specfied month from DB */
+function get_tasks_month_DB(month) {
+  return JSON.parse(getFromDB(KEY_MONTH_PREFIX+month)) || [];
+}
+
+/* save array of tasks for specified month to DB */
+function set_tasks_month_DB(tasks) {
+  return addToDB(KEY_MONTHS, JSON.stringify(tasks));
 }
