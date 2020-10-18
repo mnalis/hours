@@ -16,3 +16,11 @@ button {
   margin-bottom: 1em;
   padding: 1em;
 }
+
+table, th, td, caption {
+  border: 1px solid black;
+}
+
+ul {
+ list-style-type: none;
+}
