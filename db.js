@@ -44,20 +44,20 @@ function addToDB(key, val) {
 
 
 /* set default month to use */
-function set_default_month(month) {
+function set_default_month_DB(month) {
   return addToDB(KEY_LASTMONTH, month);
 }
 /* returns default month to use */
-function get_default_month() {
+function get_default_month_DB() {
    return getFromDB(KEY_LASTMONTH);
 }
 
 /* return array of months from DB */
-function get_months() {
+function get_months_DB() {
   return JSON.parse(getFromDB(KEY_MONTHS)) || [];
 }
 
 /* save array of months to DB */
-function set_months(months) {
+function set_months_DB(months) {
   return addToDB(KEY_MONTHS, JSON.stringify(months));
 }

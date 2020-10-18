@@ -28,8 +28,8 @@ const elemSelectedMonth = document.getElementById('selected_month');
 
 /* show list of months in DB */
 function showMonths() {
-  const months = get_months().sort().reverse();
-  const last_used = get_default_month();
+  const months = get_months_DB().sort().reverse();
+  const last_used = get_default_month_DB();
   console.debug ('showMonths:', months, 'last:', last_used);
   let monthList = '';
   for (let i = 0, month; month = months[i]; i++) {
@@ -45,13 +45,13 @@ function showMonths() {
 function add_month(evt) {
   evt.preventDefault();			// or we'll try to GET/POST the Form...
   //if (!elemMonthValue.checkValidity()) return false;
-  let months = get_months();
+  let months = get_months_DB();
   const m=elemMonthValue.value;
   if (months.indexOf(m) > -1) return false;	// do not allow duplicates
   console.debug ('Adding month', m);
   months.push(m);
-  set_months(months);
-  set_default_month(m);
+  set_months_DB(months);
+  set_default_month_DB(m);
   /* clear field and prepare to enter new value */
   elemMonthValue.value = '';
   elemMonthValue.focus();
@@ -59,8 +59,9 @@ function add_month(evt) {
 }
 
 
-/* select new default month */
+/* select new default month, and update display */
 function change_default_month() {
-  elemSelectedMonth.innerHTML = elemMonthList.value;
-  set_default_month(elemSelectedMonth.innerHTML);
+  const m = elemMonthList.value;
+  elemSelectedMonth.innerHTML = m;
+  set_default_month_DB(m);
 }
