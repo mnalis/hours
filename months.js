@@ -29,7 +29,7 @@ const elemSelectedMonth = document.getElementById('selected_month');
 /* build a droplist of months with selected default_month */
 function build_months_list(default_month) {
   const months = get_months_DB().sort().reverse();
-  console.debug ('build_months_list:', months, 'default:', default_month);
+  //console.debug ('build_months_list:', months, 'default:', default_month);
   let monthList = '';
   for (let i = 0, month; month = months[i]; i++) {
     const selected = (month === default_month) ? ' selected' : '';

@@ -20,4 +20,52 @@
 
 'use strict';
 
-const elemSecDetails = document.getElementById('sec_details');
+const elemSecDetails	= document.getElementById('sec_details');
+const elemDetailsId	= document.getElementById('details_id');
+const elemFormDetails	= document.getElementById('form_details');
+
+const elemFormDetailId		= document.getElementById('details_id');
+const elemFormDetailDate	= document.getElementById('details_date');
+const elemFormDetailStart	= document.getElementById('details_start');
+const elemFormDetailEnd		= document.getElementById('details_end');
+const elemFormDetailBreak	= document.getElementById('details_break');
+const elemFormDetailNotes	= document.getElementById('details_notes');
+
+/* creates a new task */
+function add_task_new() {
+  elemDetailsId.value = -1;			// indicate new Task
+  elemSecDetails.style.display = 'block';	// show details form
+}
+
+/* add new task details to DB */
+function add_task_done(evt) {
+  evt.preventDefault();			// or we'll try to GET/POST the Form...
+
+  const id = elemFormDetailId.value;
+  const m = get_default_month_DB();
+  let tasks = get_tasks_month_DB(m);
+
+  if (id < 0) {
+      console.debug ('Adding new task');
+      tasks.push ( [
+          elemFormDetailDate.value,
+          elemFormDetailStart.value,
+          elemFormDetailEnd.value,
+          elemFormDetailBreak.value,
+          elemFormDetailNotes.value,
+          ] );
+      set_tasks_month_DB(m, tasks);
+  } else {
+      console.debug ('Updating task '+id);
+      alert ('FIXME editing tasks not supported yet');
+  }
+
+  elemSecDetails.style.display = 'none';	// hide details form again after submit
+  show_list(m);
+  return false;
+}
+
+/* show totals for a current month category */
+function show_totals() {
+  alert ('FIXME - show_totals()');
+}

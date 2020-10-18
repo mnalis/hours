@@ -21,8 +21,11 @@
 'use strict';
 
 /* init input field handlers */
-elemFormMonth.addEventListener('submit', add_month, false);
-elemMonthList.addEventListener('change', change_default_month);
+elemFormMonth.addEventListener	('submit', add_month, false);
+elemMonthList.addEventListener	('change', change_default_month);
+elemNewTask.addEventListener	('click',  add_task_new);
+elemShowTotals.addEventListener	('click',  show_totals);
+elemFormDetails.addEventListener('submit', add_task_done, false);
  
 /* try to enable persistent storage */
 if (navigator.storage && navigator.storage.persist) {

@@ -5,6 +5,8 @@
 - better icons
 - htaccess caching permanent for icons and version resorces etc.
 - HTML/CSS/JS validate
+- use HTML time/date pickers? add icon button for "set to current time"
+- accesibility check
 - README.md live instance link, and mention on https://mnalis.com/
 - test in Chromium Lighthouse
   - TypeError: Failed to execute 'fetch' on 'WorkerGlobalScope': 'only-if-cached' can be set only with 'same-origin' mode at https://hours.mnalis.com/sw.js:56:11
@@ -38,3 +40,4 @@
 	- UPDATE / CANCEL / DELETE buttons (disable CANCEL if new event)
 
 - show totals for current month (with and w/o breaks)
+- grep FIXME in code

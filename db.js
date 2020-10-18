@@ -36,7 +36,7 @@ function addToDB(key, val) {
     //console.debug('addToDB', key, '=', val);
     localStorage.setItem(key, val);
   } catch (ex) {
-    console.error(`*** LocalStorage: '${ex.name}' ***`, ex);
+    console.error("*** LocalStorage: '" + ex.name + "' ***");
     alert('Oops: Error writing to LocalStorage, check console.');
     return false;
   }
@@ -70,6 +70,6 @@ function get_tasks_month_DB(month) {
 }
 
 /* save array of tasks for specified month to DB */
-function set_tasks_month_DB(tasks) {
-  return addToDB(KEY_MONTHS, JSON.stringify(tasks));
+function set_tasks_month_DB(month, tasks) {
+  return addToDB(KEY_MONTH_PREFIX+month, JSON.stringify(tasks));
 }
