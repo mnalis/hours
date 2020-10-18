@@ -30,7 +30,7 @@ const elemShowTotals = document.getElementById('btn_totals');
 function calc_minutes(start, end, breaks) {
     let [s_h, s_m] = start.split(':');
     let [e_h, e_m] = end.split(':');
-    let [b_h, b_m] = end.split(':');
+    let [b_h, b_m] = breaks.split(':');
 
     let s_total = Number(s_h) * 60 + Number(s_m);
     let e_total = Number(e_h) * 60 + Number(e_m);
