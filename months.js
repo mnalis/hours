@@ -56,7 +56,11 @@ function add_month(evt) {
   console.debug ('Adding month', m);
   months.push(m);
   set_months_DB(months);
+
+  /* update DB and table shown on screen */
   set_default_month_DB(m);
+  show_list(m);
+
   /* clear field and prepare to enter new value */
   elemMonthValue.value = '';
   elemMonthValue.focus();
@@ -71,5 +75,5 @@ function change_default_month() {
   console.debug('chaning default month to', m);
   elemSelectedMonth.innerHTML = m;
   set_default_month_DB(m);
-  return show_list(m);
+  show_list(m);
 }
