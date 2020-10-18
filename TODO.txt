@@ -16,6 +16,8 @@
 - offer install: https://web.dev/customize-install/
 - split to multiple .js files (+main, +db, +months, -tasks) for readability (and precache all of them!). need copyright in all of them :( also 'part of Hours (c)....' and above explanation of that module
 
+- on month change, and on page load, update (and) default_month
+
 - +add / -rename / -delete months
 + select current month
 

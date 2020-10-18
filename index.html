@@ -49,7 +49,7 @@
             <input type="submit" value="Add month">
         </form>
         <p>
-        <label for="month_list">Choose month</label>
+        <label for="month_list">Choose month&hellip;</label>
         <select id="month_list" title="Choose month category">
         </select>
         </p>
@@ -84,7 +84,8 @@
     <section id="sec_details">
         <h2>Details</h2>
                 <div id="date">
-                        <form action="/action_page.php">
+                        <form id="form_details">
+                            <ul>
                                 <li>
                                         <label for="date_time">Date</label>
                                                 <input type="text" id="date_time" name="Date" placeholder="date">
@@ -105,6 +106,7 @@
                                         <label for="subject">Subject</label>
                                                 <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
                                 </li>
+                            </ul>
                         </form>
                 </div>
 

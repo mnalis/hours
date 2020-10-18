@@ -41,3 +41,4 @@ if ('serviceWorker' in navigator) {
 
 /* show current list of months on startup */
 showMonths();
+change_default_month(get_default_month());

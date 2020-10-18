@@ -62,4 +62,5 @@ function add_month(evt) {
 /* select new default month */
 function change_default_month() {
   elemSelectedMonth.innerHTML = elemMonthList.value;
+  set_default_month(elemSelectedMonth.innerHTML);
 }
