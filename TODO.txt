@@ -32,7 +32,8 @@
 	- set start time = now, end time= now
 	- jump to edit event
 
-  - edit event (with update, cancel and delete inside)
+  - edit task (with update, cancel and delete inside)
+	- move task from one month to another
 	- update start time
 	- update end time
 	- update breaks
@@ -46,3 +47,6 @@
 - add break as last parameter, so we can use "enter" to submit form (and it is less important)
 - update README.md
 - CSS & HTML styling
+- sort task table
+- better name than "task" for strings / variables / functions?? ("event"? "hour"? "billed"?)
+
