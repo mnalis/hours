@@ -23,7 +23,7 @@
 const elemSecList = document.getElementById('sec_list');
 const elemTableList = document.getElementById('table_body');
 const elemNewTask = document.getElementById('btn_new_task');
-const elemShowTotals = document.getElementById('btn_totals');
+const elemTableWorked = document.getElementById('table_worked');
 
 /* returns number of minutes worked between start and end,
    taking into account possible midnight wrap and break times */
@@ -45,7 +45,7 @@ function calc_minutes(start, end, breaks) {
 
 /* zeroleads the hours:minutes */
 function format_time(h, m) {
-    return ('0'+h).slice(-2) + ':' + ('0'+m).slice(-2);
+    return (h < 10 ? '0'+h : h) + ':' + (m < 10 ? '0'+m : m)
 }
 
 /* convert minutes to human readable HH:MM format */
@@ -56,48 +56,33 @@ function min_to_human(min) {
     return format_time(h, m);
 }
 
-/* returns human readable difference between start and end times, excluding break times */
-function time_diff(start, end, breaks) {
-    let diff_min = calc_minutes(start, end, breaks);
-    return min_to_human (diff_min);
-}
-
-/* build table rows for specified months */
+/* build table rows for specified months and total sum of worked time */
 function build_list(month) {
     const tasks = get_tasks_month_DB(month);
 
+    let total_minutes = 0;
     let rows = '';
+
     for (let i = 0, task; task = tasks[i]; i++) {
+        let task_min = calc_minutes(task[1], task[2], task[3]);	// time worked: end-start-breaks
+        total_minutes += task_min;
         rows += '<tr>';
         rows += '<td>' + task[0] + '</td>';			// date
         rows += '<td>' + task[1] + '</td>';			// start time
         rows += '<td>' + task[2] + '</td>';			// end time
-        rows += '<td>' + time_diff(task[1], task[2], task[3]) + '</td>';	// time worked: end-start-breaks
+        rows += '<td>' + min_to_human(task_min) + '</td>';	// time worked: end-start-breaks
         rows += '<td>' + task[4] + '</td>';			// notes
         rows += '</tr> ';
     }
 
-    return rows;
+    return [ min_to_human(total_minutes), rows ];
 }
 
 /* show list of tasks for specified month */
 function show_list(month) {
     console.debug ('show_list:', month);
     //console.debug ('table_body before:', elemTableList.innerHTML);
-    elemTableList.innerHTML = build_list(month);
+    [ elemTableWorked.innerHTML, elemTableList.innerHTML ] = build_list(month);
     //console.debug ('table_body after:', elemTableList.innerHTML);
     elemSecList.style.display = 'block';			// unhide table
-}
-
-/* show totals for a current month category */
-function show_totals() {
-    const month = get_default_month_DB();
-    const tasks = get_tasks_month_DB(month);
-
-    let total_minutes = 0;
-    for (let i = 0, task; task = tasks[i]; i++) {
-        total_minutes += calc_minutes(task[1], task[2], task[3]);	// time worked: end-start-breaks
-    }
-
-    alert ('Total: ' + min_to_human (total_minutes));
 }
