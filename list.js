@@ -64,7 +64,7 @@ function time_diff(start, end, breaks) {
 
 /* build table rows for specified months */
 function build_list(month) {
-    let tasks = get_tasks_month_DB(month);
+    const tasks = get_tasks_month_DB(month);
 
     let rows = '';
     for (let i = 0, task; task = tasks[i]; i++) {
@@ -87,4 +87,17 @@ function show_list(month) {
     elemTableList.innerHTML = build_list(month);
     //console.debug ('table_body after:', elemTableList.innerHTML);
     elemSecList.style.display = 'block';			// unhide table
+}
+
+/* show totals for a current month category */
+function show_totals() {
+    const month = get_default_month_DB();
+    const tasks = get_tasks_month_DB(month);
+
+    let total_minutes = 0;
+    for (let i = 0, task; task = tasks[i]; i++) {
+        total_minutes += calc_minutes(task[1], task[2], task[3]);	// time worked: end-start-breaks
+    }
+
+    alert ('Total: ' + min_to_human (total_minutes));
 }

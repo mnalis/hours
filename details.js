@@ -64,8 +64,3 @@ function add_task_done(evt) {
   show_list(m);
   return false;
 }
-
-/* show totals for a current month category */
-function show_totals() {
-  alert ('FIXME - show_totals()');
-}
