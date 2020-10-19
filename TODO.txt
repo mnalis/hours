@@ -2,7 +2,7 @@
 	- optional sync? https://developers.google.com/web/updates/2015/12/background-sync
 - add option for export/import data
 - option to refresh, but run offline-first
-- better icons
+- better icons images
 - htaccess caching permanent for icons and version resorces etc.
 - HTML/CSS/JS validate
 - use HTML time/date pickers? add icon button for "set to current time"
@@ -15,19 +15,19 @@
   - HTTP/2 enable ?
   - add robots.txt ?
   - Error while trying to use the following icon from the Manifest: https://hours.mnalis.com/hours-512.png (Download error or resource isn't a valid image)  ??
-- offer install: https://web.dev/customize-install/
-- split to multiple .js files (+main, +db, +months, -tasks) for readability (and precache all of them!). need copyright in all of them :( also 'part of Hours (c)....' and above explanation of that module
 - special button to install App, not automatically on page load
+	- offer install: https://web.dev/customize-install/
++ split to multiple .js files (+main, +db, +months, +details) for readability (and precache all of them!). need copyright in all of them :( also 'part of Hours (c)....' and above explanation of that module
 - automatically upgrade / erase cache on app update (refresh)
 	maybe "cache, then network/save_to_cache strategy" ?
 
-- on month change, and on page load, update (and) default_month
++ on month change, and on page load, update (and) default_month
 
 - +add / -rename / -delete months
 + select current month
 
 - in current month:
-  - display current month (just to be sure "select onupdate" is working OK)
+  + display current month (just to be sure "select onupdate" is working OK)
   - add event
 	- set start time = now, end time= now
 	- jump to edit event
@@ -39,9 +39,10 @@
 	- update in which month it is
 	- UPDATE / CANCEL / DELETE buttons (disable CANCEL if new event)
 
-- show totals for current month (with and w/o breaks)
++? show totals for current month (with and w/o breaks)
 - grep FIXME in code
 - function prefix for all functions triggered from events (and/or add "evt" parameter)
 - clean (and/or setup to current date/time) data when entering new task
 - add break as last parameter, so we can use "enter" to submit form (and it is less important)
-- show totals by default as <tfoot> !
+- update README.md
+- CSS & HTML styling
