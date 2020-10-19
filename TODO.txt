@@ -41,3 +41,6 @@
 
 - show totals for current month (with and w/o breaks)
 - grep FIXME in code
+- function prefix for all functions triggered from events (and/or add "evt" parameter)
+- clean (and/or setup to current date/time) data when entering new task
+- add break as last parameter, so we can use "enter" to submit form (and it is less important)

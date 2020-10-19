@@ -39,23 +39,27 @@ function calc_minutes(start, end, breaks) {
     let diff_min = e_total - s_total;
     if (diff_min < 0) diff_min += 24*60;	 	// handle midnight wrap
     diff_min -= b_total;
+    if (diff_min < 0) console.error ('worked less than 0 minutes: ' + diff_min)
     return diff_min;
 }
 
-// zeroleads the hours:minutes
+/* zeroleads the hours:minutes */
 function format_time(h, m) {
     return ('0'+h).slice(-2) + ':' + ('0'+m).slice(-2);
+}
+
+/* convert minutes to human readable HH:MM format */
+function min_to_human(min) {
+    let h = Math.floor ( min / 60 );
+    let m = min % 60;
+
+    return format_time(h, m);
 }
 
 /* returns human readable difference between start and end times, excluding break times */
 function time_diff(start, end, breaks) {
     let diff_min = calc_minutes(start, end, breaks);
-    if (diff_min < 0) console.error ('worked less than 0 minutes: ' + diff_min)
-
-    let diff_h = Math.floor ( diff_min / 60 );
-    let diff_m = diff_min % 60;
-
-    return format_time(diff_h, diff_m);
+    return min_to_human (diff_min);
 }
 
 /* build table rows for specified months */

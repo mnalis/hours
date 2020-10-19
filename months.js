@@ -58,8 +58,7 @@ function add_month(evt) {
   set_months_DB(months);
 
   /* update DB and table shown on screen */
-  set_default_month_DB(m);
-  show_list(m);
+  make_default_month(m);
 
   /* clear field and prepare to enter new value */
   elemMonthValue.value = '';
@@ -67,13 +66,17 @@ function add_month(evt) {
   return false;
 }
 
-
 /* select new default month, and update display */
+function make_default_month(month) {
+  console.debug('changing default month to', month);
+  elemSelectedMonth.innerHTML = month;
+  set_default_month_DB(month);
+  show_list(month);
+}
+
+/* update to newly selected default month */
 function change_default_month() {
   const m = elemMonthList.value;	/* selected element in list */
   if (!m) return;
-  console.debug('chaning default month to', m);
-  elemSelectedMonth.innerHTML = m;
-  set_default_month_DB(m);
-  show_list(m);
+  make_default_month(m);
 }
