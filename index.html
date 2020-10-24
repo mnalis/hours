@@ -23,12 +23,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Hours</title>
-    <link rel="stylesheet" href="/main.css">
     <script src="/db.js" defer></script>
     <script src="/details.js" defer></script>
     <script src="/list.js" defer></script>
     <script src="/months.js" defer></script>
     <script src="/main.js" defer></script>
+    <link rel="stylesheet" href="/main.css">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" sizes="128x128" href="hours-128.png">
     <meta name="theme-color" content="#4285f4">
@@ -41,7 +41,8 @@
 </head>
 
 <body>
-    <h1>Hours</h1>
+    <h1>Hours <span id="ver">loading&hellip;</span></h1>
+    <button type="button" id="refresh_app" disabled>&#8635;</button>
 
     <section id="sec_months">
         <h2>Months editor</h2>
@@ -95,23 +96,23 @@
                             <ul>
                                 <li>
                                         <label for="date_time">Date</label>
-                                                <input type="text" id="details_date" placeholder="1970-12-31"  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" minlength="10" maxlength="10">
+                                                <input type="text" id="details_date" placeholder="YYYY-MM-DD"  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" minlength="10" maxlength="10">
                                 </li>
                                 <li>
                                         <label for="begin_time">Begin</label>
-                                                 <input type="text" id="details_start" placeholder="09:00" required pattern="[0-9]{2}:[0-9]{2}" minlength="5" maxlength="5">
+                                                 <input type="text" id="details_start" placeholder="HH:MM" required pattern="[0-9]{2}:[0-9]{2}" minlength="5" maxlength="5">
                                 </li>
                                 <li>
                                         <label for="end_time">End</label>
-                                                <input type="text" id="details_end" placeholder="17:00" required pattern="[0-9]{2}:[0-9]{2}" minlength="5" maxlength="5">
+                                                <input type="text" id="details_end" placeholder="HH:MM" required pattern="[0-9]{2}:[0-9]{2}" minlength="5" maxlength="5">
+                                </li>
+                                <li>
+                                        <label for="subject">Notes</label>
+                                                <textarea id="details_notes" placeholder="Please enter task decription..."></textarea>
                                 </li>
                                 <li>
                                         <label for="breaktime">Break</label>
                                                 <input type="text" id="details_break" placeholder="00:30" value="00:00" required pattern="[0-9]{2}:[0-9]{2}" minlength="5" maxlength="5">
-                                </li>
-                                <li>
-                                        <label for="subject">Notes</label>
-                                                <textarea id="details_notes" placeholder="Task decription..."></textarea>
                                 </li>
                             </ul>
                             <div>

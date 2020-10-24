@@ -41,6 +41,15 @@
 	- UPDATE / CANCEL / DELETE buttons (disable CANCEL if new event)
 
 +? show totals for current month (with and w/o breaks)
+- default focus on new task button?
+- when clicking on "new task"
+	- focus on "Start" field
+	- autofill beginning of date with current yyyy-mm
+	- html5 date/time pickers?
+
+- load all resources with ?md5=xxxxxxxx; and update "make publish" to update
+  to all md5s
+- keyboard shortcuts (and add as hover text "title=" on buttons)
 - grep FIXME in code
 - function prefix for all functions triggered from events (and/or add "evt" parameter)
 - clean (and/or setup to current date/time) data when entering new task

@@ -20,6 +20,10 @@
 
 'use strict';
 
+const ver = 'v1.01';
+
+console.debug ('main.js', ver, 'starting')
+
 /* init input field handlers */
 elemFormMonth.addEventListener	('submit', add_month, false);
 elemMonthList.addEventListener	('change', change_default_month);
@@ -44,3 +48,8 @@ if ('serviceWorker' in navigator) {
 /* show current list of months on startup */
 showMonths();
 change_default_month();
+
+/* update version in HTML */
+document.getElementById('ver').innerHTML = ver;
+
+console.debug ('main.js', ver, 'finished')
