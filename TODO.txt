@@ -44,9 +44,18 @@
 - grep FIXME in code
 - function prefix for all functions triggered from events (and/or add "evt" parameter)
 - clean (and/or setup to current date/time) data when entering new task
-- add break as last parameter, so we can use "enter" to submit form (and it is less important)
+- add "break" as last parameter in new task, so we can use "enter" to submit form (and it is less important)
 - update README.md
 - CSS & HTML styling
 - sort task table
 - better name than "task" for strings / variables / functions?? ("event"? "hour"? "billed"?)
-
+- remove/comment-out console.debug etc debugging at the end
+- last updated string on home (collapsable about?) and utf8 refresh button
+	- main.js set_refresh_DB(1)
+	   - serviceworker checks _REFRESH, and if non-zero
+		- fetch goes direct to network
+		- install - cacheAll all resources, and when all caches complete, set _REFRESH=0 again and _LASTUPDATE=`date`
+			- will install be called? how to force reload serviceworker? check docs
+	- main.js when _REFRESH=0, show notice and force reload page
+- also, check that app does not lose data over serveral days, before using it in production...
+	 
