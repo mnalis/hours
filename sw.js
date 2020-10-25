@@ -28,29 +28,47 @@ const CACHE_ID = "Hours-v1";
  */
 
 self.addEventListener('install', function(event) {
-  console.log('[ServiceWorker] Install');
+  console.log('[ServiceWorker] Installing');
   event.waitUntil(
     caches.open(CACHE_ID).then(function (cache) {
       return cache.addAll(
         [
-            '/index.html',
+            '/',
             '/db.js',
             '/details.js',
             '/list.js',
             '/months.js',
             '/main.js',
             '/main.css',
+            '/hours-128.png',
         ]
       );
     })
   );
+  console.log('[ServiceWorker] Installed (all cached).');
 });
 
 /* once a new Service Worker has installed and a previous version isn't being used, the new one activates, and we get an activate event */
-self.addEventListener('activate', function(event) {
-    console.log('[ServiceWorker] Activate');
-    return self.clients.claim();
+self.addEventListener("activate", event => {
+  console.log('[ServiceWorker] Activating new SW');
+  // delete any old caches
+  event.waitUntil(
+    caches
+      .keys()
+      .then(keys => keys.filter(key => key !== CACHE_ID))
+      .then(keys =>
+        Promise.all(
+          keys.map(key => {
+            console.debug(`SW deleting cache ${key}`);
+            return caches.delete(key);
+          })
+        )
+      )
+  );
+  console.log('[ServiceWorker] Activated new SW with cache_id=',CACHE_ID);
+  return self.clients.claim();
 });
+
 
 /* try cache first: if cache is missing, fall back to network (and put response in cache) */
 self.addEventListener('fetch', function (event) {
@@ -61,6 +79,7 @@ self.addEventListener('fetch', function (event) {
           response ||
           fetch(event.request).then(function (response) {
             cache.put(event.request, response.clone());
+            //console.debug ('SW fetch putting result to cache');
             return response;
           })
         );

@@ -47,6 +47,14 @@
 	- autofill beginning of date with current yyyy-mm
 	- html5 date/time pickers?
 
+- refresh button
+	- make it work
+	- disabled by default, enable when everything is ready at the end of main.js (how to check if sw.js cacheAll is still running?)
+		so we avoid the possible race (cacheAll of fetch/cache.put running when we refresh)
+	- see how to flush all cache (probably should have fake URL, that sw.js fetch method will intercept and do the cache cleaning and reload) - add console.info too
+	- does cacheAll update all content? it would be better than deleteall+cacheall again, as flaky network conn wouldn't ruin the day.
+		- perhaps we should load all in different cache, and then switch to it if all went well?
+
 - load all resources with ?md5=xxxxxxxx; and update "make publish" to update
   to all md5s
 - keyboard shortcuts (and add as hover text "title=" on buttons)

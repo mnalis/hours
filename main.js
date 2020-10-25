@@ -20,15 +20,30 @@
 
 'use strict';
 
-const ver = 'v1.01';
+const ver = 'v1.06a';
 
 console.debug ('main.js', ver, 'starting')
+
+const elemVersion = document.getElementById('ver');
+const elemRefresh = document.getElementById('btn_refresh_app');
+
+/* creates a new task */
+function force_refresh() {
+  console.debug ('Starting force_refresh');
+  elemVersion.innerHTML = 'Updating&hellip;';
+  caches.delete("Hours-v1");
+  elemVersion.innerHTML = ver;
+  console.debug ('Finishing force_refresh with window.reload()');
+  window.location.reload(true);
+}
 
 /* init input field handlers */
 elemFormMonth.addEventListener	('submit', add_month, false);
 elemMonthList.addEventListener	('change', change_default_month);
 elemNewTask.addEventListener	('click',  add_task_new);
 elemFormDetails.addEventListener('submit', add_task_done, false);
+elemRefresh.addEventListener	('click',  force_refresh); 
+elemRefresh.disabled = false;
  
 /* try to enable persistent storage */
 if (navigator.storage && navigator.storage.persist) {
@@ -50,6 +65,6 @@ showMonths();
 change_default_month();
 
 /* update version in HTML */
-document.getElementById('ver').innerHTML = ver;
+elemVersion.innerHTML = ver;
 
 console.debug ('main.js', ver, 'finished')
