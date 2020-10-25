@@ -34,8 +34,8 @@
 
   - edit task (with update, cancel and delete inside)
 	- move task from one month to another
-	- update start time
-	- update end time
+	- update start time (with "set to now()" button)
+	- update end time (with "set to now()" button)
 	- update breaks
 	- update in which month it is
 	- UPDATE / CANCEL / DELETE buttons (disable CANCEL if new event)
@@ -54,6 +54,10 @@
 	- see how to flush all cache (probably should have fake URL, that sw.js fetch method will intercept and do the cache cleaning and reload) - add console.info too
 	- does cacheAll update all content? it would be better than deleteall+cacheall again, as flaky network conn wouldn't ruin the day.
 		- perhaps we should load all in different cache, and then switch to it if all went well?
+	- hide it in collapsed-by-default div so it isn't clicked by error
+
+- use "button type=submit" instead of "input type=submit" to have them all
+  look the same
 
 - load all resources with ?md5=xxxxxxxx; and update "make publish" to update
   to all md5s
