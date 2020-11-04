@@ -31,10 +31,44 @@ const elemFormDetailEnd		= document.getElementById('details_end');
 const elemFormDetailBreak	= document.getElementById('details_break');
 const elemFormDetailNotes	= document.getElementById('details_notes');
 
-/* creates a new task */
-function add_task_new() {
-  elemDetailsId.value = -1;			// indicate new Task
+const elemCancelTask		= document.getElementById('btn_details_cancel');
+const elemDeleteTask		= document.getElementById('btn_details_delete');
+
+/* clears the form data */
+function details_form_clear() {
+  elemDetailsId.value = -2;			// indicate undef, for catching errors
+  elemFormDetailDate.value = '';
+  elemFormDetailStart.value = '';
+  elemFormDetailEnd.value = '';
+  elemFormDetailBreak.value = '';
+  elemFormDetailNotes.value = '';
+  elemCancelTask.disabled = true;
+  elemDeleteTask.disabled = true;
+}
+
+/* hides the details form */
+function details_form_hide() {
+  elemSecDetails.style.display = 'none';	// hide details form again
+}
+
+/* show the details form */
+function details_form_show(hasCancel, hasDelete) {
   elemSecDetails.style.display = 'block';	// show details form
+  elemCancelTask.disabled = !hasCancel;
+  elemDeleteTask.disabled = !hasDelete;
+}
+
+/* creates a new empty task */
+function add_task_new() {
+  details_form_clear();
+  elemDetailsId.value = -1;			// indicate new Task
+  details_form_show(true, false);		// has Cancel button
+}
+
+/* cancels current task */
+function add_task_cancel() {
+  details_form_clear();
+  details_form_hide();
 }
 
 /* add new task details to DB */
@@ -45,7 +79,7 @@ function add_task_done(evt) {
   const m = get_default_month_DB();
   let tasks = get_tasks_month_DB(m);
 
-  if (id < 0) {
+  if (id == -1) {
       console.debug ('Adding new task');
       tasks.push ( [
           elemFormDetailDate.value,
@@ -60,7 +94,7 @@ function add_task_done(evt) {
       alert ('FIXME editing tasks not supported yet');
   }
 
-  elemSecDetails.style.display = 'none';	// hide details form again after submit
+  details_form_hide();
   show_list(m);
   return false;
 }

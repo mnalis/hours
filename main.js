@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.06a';
+const ver = 'v1.06b';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -41,6 +41,7 @@ function force_refresh() {
 elemFormMonth.addEventListener	('submit', add_month, false);
 elemMonthList.addEventListener	('change', change_default_month);
 elemNewTask.addEventListener	('click',  add_task_new);
+elemCancelTask.addEventListener	('click',  add_task_cancel);
 elemFormDetails.addEventListener('submit', add_task_done, false);
 elemRefresh.addEventListener	('click',  force_refresh); 
 elemRefresh.disabled = false;

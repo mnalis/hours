@@ -64,13 +64,13 @@ function build_list(month) {
     let rows = '';
 
     for (let i = 0, task; task = tasks[i]; i++) {
-        let task_min = calc_minutes(task[1], task[2], task[3]);	// time worked: end-start-breaks
+        let task_min = calc_minutes(task[1], task[2], task[3]);	// time worked in minutes: end - start - breaks
         total_minutes += task_min;
-        rows += '<tr>';
+        rows += '<tr id="id_task_' + i + '">';
         rows += '<td>' + task[0] + '</td>';			// date
         rows += '<td>' + task[1] + '</td>';			// start time
         rows += '<td>' + task[2] + '</td>';			// end time
-        rows += '<td>' + min_to_human(task_min) + '</td>';	// time worked: end-start-breaks
+        rows += '<td>' + min_to_human(task_min) + '</td>';	// time worked
         rows += '<td>' + task[4] + '</td>';			// notes
         rows += '</tr> ';
     }
