@@ -59,20 +59,42 @@ function details_form_show(hasCancel, hasDelete) {
 }
 
 /* creates a new empty task */
-function add_task_new() {
+function task_new() {
   details_form_clear();
   elemDetailsId.value = -1;			// indicate new Task
   details_form_show(true, false);		// has Cancel button
 }
 
+/* edits existing task */
+function task_edit(evt) {
+  // FIXME add code for edit. 
+  const target = evt.target;
+  console.debug ('FIXME target', target);
+
+  alert ('FIXME: edit not imlemented yet');  
+  // FIXME add code for delete button
+  details_form_show(true, true);		// has Cancel and Delete buttons
+}
+
+
 /* cancels current task */
-function add_task_cancel() {
+function task_cancel() {
   details_form_clear();
   details_form_hide();
 }
 
+/* deletes current task */
+function task_delete() {
+  if (confirm ('Are you sure you want to delete this task?')) {
+    alert ('FIXME: delete not implemented yet');
+    details_form_clear();
+    details_form_hide();
+  }
+  return false;
+}
+
 /* add new task details to DB */
-function add_task_done(evt) {
+function task_done(evt) {
   evt.preventDefault();			// or we'll try to GET/POST the Form...
 
   const id = elemFormDetailId.value;

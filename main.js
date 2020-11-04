@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.06b';
+const ver = 'v1.06d';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -38,12 +38,14 @@ function force_refresh() {
 }
 
 /* init input field handlers */
-elemFormMonth.addEventListener	('submit', add_month, false);
-elemMonthList.addEventListener	('change', change_default_month);
-elemNewTask.addEventListener	('click',  add_task_new);
-elemCancelTask.addEventListener	('click',  add_task_cancel);
-elemFormDetails.addEventListener('submit', add_task_done, false);
-elemRefresh.addEventListener	('click',  force_refresh); 
+elemFormMonth.addEventListener	('submit', add_month, false);		// create new month category
+elemMonthList.addEventListener	('change', change_default_month);	// select month category
+elemTableList.addEventListener	('click',  task_edit);			// edit any task
+elemNewTask.addEventListener	('click',  task_new);			// start creating new task
+elemCancelTask.addEventListener	('click',  task_cancel);		// cancel task
+elemDeleteTask.addEventListener	('click',  task_delete);		// delete task
+elemFormDetails.addEventListener('submit', task_done, false);		// finish creating/updating task
+elemRefresh.addEventListener	('click',  force_refresh); 		// app refresh/upgrade
 elemRefresh.disabled = false;
  
 /* try to enable persistent storage */
