@@ -81,3 +81,6 @@
 	- main.js when _REFRESH=0, show notice and force reload page
 - also, check that app does not lose data over serveral days, before using it in production...
 - also, check in several different browsers on multiple devices
+- what if web page is open in multiple tabs, and edited in non-newest?
+  have safety like hidden HTML element with timestamp, and copy in DB, and refuse to add/update/delete if they do not match?
+- CSS hover change color of row, to indicate we can edit it... but what to do on mobile?

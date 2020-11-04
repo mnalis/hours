@@ -71,8 +71,10 @@ function isFormShown() {
 /* creates a new empty task */
 function task_new() {
   if (isFormShown()) { return false; }
+
   details_form_clear();
   elemDetailsId.value = -1;			// indicate new Task
+
   details_form_show(true, false);		// has Cancel button
   return true;
 }
@@ -85,8 +87,6 @@ function task_edit(evt) {
   const tr = target.parentElement;
   const rowIdx = tr.rowIndex - 1;
   const td  = tr.children;
-
-  console.debug ('FIXME target', target);
 
   elemDetailsId.value = rowIdx;			// 0 = first <tr>
   elemFormDetailDate.value = td[0].innerHTML;
@@ -109,9 +109,11 @@ function task_cancel() {
 /* deletes current task */
 function task_delete() {
   if (confirm ('Really DELETE?')) {
+    const id = elemFormDetailId.value;
     const m = get_default_month_DB();
-    alert ('FIXME: delete not implemented yet');
-    
+
+    alert ('FIXME: delete not implemented yet, id='+id);
+
     details_form_clear();
     details_form_hide();
     show_list(m);
@@ -139,8 +141,13 @@ function task_done(evt) {
           ] );
       set_tasks_month_DB(m, tasks);
   } else {
-      console.debug ('Updating task '+id);
-      alert ('FIXME editing tasks not supported yet');
+      console.debug ('Updating task '+id, tasks);
+      tasks[id][0] = elemFormDetailDate.value;
+      tasks[id][1] = elemFormDetailStart.value;
+      tasks[id][2] = elemFormDetailEnd.value;
+      tasks[id][3] = elemFormDetailBreak.value;
+      tasks[id][4] = elemFormDetailNotes.value;
+      set_tasks_month_DB(m, tasks);
   }
 
   details_form_hide();

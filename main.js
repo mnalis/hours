@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.06i';
+const ver = 'v1.10';
 
 console.debug ('main.js', ver, 'starting')
 
