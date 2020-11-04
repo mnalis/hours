@@ -67,12 +67,17 @@ function task_new() {
 
 /* edits existing task */
 function task_edit(evt) {
-  // FIXME add code for edit. 
+  
   const target = evt.target;
-  console.debug ('FIXME target', target);
+  const tr = target.parentElement;
+  const tr_id = tr.id.match(/^id_task_(\d+)$/)[1];	// first capture group is numeric row index
+  console.debug ('id=', tr_id, 'index', tr.rowIndex);
+  const c  = tr.children;
+  const str = c[0].innerHTML+'_'+c[1].innerHTML+'_'+c[2].innerHTML+'_'+c[3].innerHTML+'_'+c[4].innerHTML;
 
-  alert ('FIXME: edit not imlemented yet');  
-  // FIXME add code for delete button
+  console.debug ('FIXME target', target);
+  alert ('FIXME: edit not implemented yet:'+tr_id);	// FIXME add code for edit. 
+
   details_form_show(true, true);		// has Cancel and Delete buttons
 }
 
@@ -85,10 +90,14 @@ function task_cancel() {
 
 /* deletes current task */
 function task_delete() {
-  if (confirm ('Are you sure you want to delete this task?')) {
+  if (confirm ('Really DELETE?')) {
+    const m = get_default_month_DB();
     alert ('FIXME: delete not implemented yet');
+    
     details_form_clear();
     details_form_hide();
+    show_list(m);
+    return true;
   }
   return false;
 }
