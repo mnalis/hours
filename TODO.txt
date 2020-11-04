@@ -55,6 +55,7 @@
 	- does cacheAll update all content? it would be better than deleteall+cacheall again, as flaky network conn wouldn't ruin the day.
 		- perhaps we should load all in different cache, and then switch to it if all went well?
 	- hide it in collapsed-by-default div so it isn't clicked by error
+	- beware of the update bugs - see https://stackoverflow.com/a/52830680/2600099
 
 - use "button type=submit" instead of "input type=submit" to have them all
   look the same
@@ -79,4 +80,4 @@
 			- will install be called? how to force reload serviceworker? check docs
 	- main.js when _REFRESH=0, show notice and force reload page
 - also, check that app does not lose data over serveral days, before using it in production...
-	 
+- also, check in several different browsers on multiple devices
