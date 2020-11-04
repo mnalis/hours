@@ -58,27 +58,45 @@ function details_form_show(hasCancel, hasDelete) {
   elemDeleteTask.disabled = !hasDelete;
 }
 
+/* safety check - abort opening new form, is old one is not closed first! */
+function isFormShown() {
+  if (elemSecDetails.style.display != 'block') {
+    return false;
+  } else {
+    alert ('details form already open, close it first');
+    return true;
+  }
+}
+
 /* creates a new empty task */
 function task_new() {
+  if (isFormShown()) { return false; }
   details_form_clear();
   elemDetailsId.value = -1;			// indicate new Task
   details_form_show(true, false);		// has Cancel button
+  return true;
 }
 
 /* edits existing task */
 function task_edit(evt) {
+  if (isFormShown()) { return false; }
   
   const target = evt.target;
   const tr = target.parentElement;
-  const tr_id = tr.id.match(/^id_task_(\d+)$/)[1];	// first capture group is numeric row index
-  console.debug ('id=', tr_id, 'index', tr.rowIndex);
-  const c  = tr.children;
-  const str = c[0].innerHTML+'_'+c[1].innerHTML+'_'+c[2].innerHTML+'_'+c[3].innerHTML+'_'+c[4].innerHTML;
+  const rowIdx = tr.rowIndex - 1;
+  const td  = tr.children;
 
   console.debug ('FIXME target', target);
-  alert ('FIXME: edit not implemented yet:'+tr_id);	// FIXME add code for edit. 
+
+  elemDetailsId.value = rowIdx;			// 0 = first <tr>
+  elemFormDetailDate.value = td[0].innerHTML;
+  elemFormDetailStart.value = td[1].innerHTML;
+  elemFormDetailEnd.value = td[2].innerHTML;
+  elemFormDetailBreak.value = min_to_human(calc_minutes(td[1].innerHTML, td[2].innerHTML, td[3].innerHTML));	// calculte break as start-end-time_worked
+  elemFormDetailNotes.value = td[4].innerHTML;
 
   details_form_show(true, true);		// has Cancel and Delete buttons
+  return true;
 }
 
 

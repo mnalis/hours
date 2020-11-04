@@ -66,7 +66,7 @@ function build_list(month) {
     for (let i = 0, task; task = tasks[i]; i++) {
         let task_min = calc_minutes(task[1], task[2], task[3]);	// time worked in minutes: end - start - breaks
         total_minutes += task_min;
-        rows += '<tr id="id_task_' + i + '">';
+        rows += '<tr>';
         rows += '<td>' + task[0] + '</td>';			// date
         rows += '<td>' + task[1] + '</td>';			// start time
         rows += '<td>' + task[2] + '</td>';			// end time
