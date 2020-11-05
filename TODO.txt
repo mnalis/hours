@@ -1,9 +1,9 @@
 - docs - it keeps data locally only
 	- optional sync? https://developers.google.com/web/updates/2015/12/background-sync
 - add option for export/import data
-- option to refresh, but run offline-first
++ option to refresh, but run offline-first
 - better icons images
-- htaccess caching permanent for icons and version resorces etc.
+-? htaccess caching permanent for icons and version resorces etc.
 - HTML/CSS/JS validate
 - use HTML time/date pickers? add icon button for "set to current time"
 - accesibility check
@@ -85,3 +85,4 @@
 - CSS hover change color of row, to indicate we can edit it... but what to do on mobile?
 - on new or edit task, shift focus to details form
 - sort task list by date+start_time (newest on top)
+- show red message below or above table when item deleted, and/or color row which was edited/created last
