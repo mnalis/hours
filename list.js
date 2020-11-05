@@ -43,9 +43,14 @@ function calc_minutes(start, end, breaks) {
     return diff_min;
 }
 
+/* zeroleads the number to 2 places */
+function z2(n) {
+    return (n < 10 ? '0'+n : n);
+}
+
 /* zeroleads the hours:minutes */
 function format_time(h, m) {
-    return (h < 10 ? '0'+h : h) + ':' + (m < 10 ? '0'+m : m)
+    return z2(h) + ':' + z2(m);
 }
 
 /* convert minutes to human readable HH:MM format */

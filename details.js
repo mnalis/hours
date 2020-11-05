@@ -68,15 +68,26 @@ function isFormShown() {
   }
 }
 
+/* returns current date in YYYY-MM-DD format suitable for HTML5 date input field */
+function getCurrentDate() {
+  const d = new Date();
+  return d.getFullYear() + '-' + z2(d.getMonth()+1) + '-' + z2(d.getDate()); 
+}
+
+/* returns current time in HH:MM format suitable for HTML5 time input field */
+function getCurrentTime() {
+  const d = new Date();
+  return z2(d.getHours()) + ':' + z2(d.getMinutes());
+}
+
 /* event: creates a new empty task */
 function task_new() {
   if (isFormShown()) { return false; }
 
   details_form_clear();
   elemDetailsId.value = -1;			// indicate new Task
-  var d = new Date();
-  elemFormDetailDate.value = d.toJSON().substr(0,10);
-  elemFormDetailStart.value = d.toJSON().substr(11,5);
+  elemFormDetailDate.value = getCurrentDate();
+  elemFormDetailStart.value = getCurrentTime()
   elemFormDetailEnd.value = '17:00';
 
   details_form_show(true, false);		// has Cancel button
