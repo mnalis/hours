@@ -28,14 +28,14 @@
 
 - in current month:
   + display current month (just to be sure "select onupdate" is working OK)
-  - add event
-	- set start time = now, end time= now
-	- jump to edit event
+  + add event
+	+? set start time = now, end time= now
+	+ jump to edit event
 
   - edit task (with update, cancel and delete inside)
 	- move task from one month to another
-	- update start time (with "set to now()" button)
-	- update end time (with "set to now()" button)
+	+ update start time (with "set to now()" button)
+	+ update end time (with "set to now()" button)
 	+ update breaks
 	+ UPDATE / CANCEL / DELETE buttons (disable DELETE if new event)
 
@@ -43,13 +43,14 @@
 - default focus on new task button?
 - when clicking on "new task"
 	- focus on "Start" field
-	- autofill beginning of date with current yyyy-mm
-	- html5 date/time pickers?
+	+? autofill beginning of date with current yyyy-mm
+	+ html5 date/time pickers?
 
 - refresh button
 	- make it work
 	- disabled by default, enable when everything is ready at the end of main.js (how to check if sw.js cacheAll is still running?)
 		so we avoid the possible race (cacheAll of fetch/cache.put running when we refresh)
+		- also in not yet installed, replace it by default with install button which does SW install (instead of doing SW install on body load!)
 	- see how to flush all cache (probably should have fake URL, that sw.js fetch method will intercept and do the cache cleaning and reload) - add console.info too
 	- does cacheAll update all content? it would be better than deleteall+cacheall again, as flaky network conn wouldn't ruin the day.
 		- perhaps we should load all in different cache, and then switch to it if all went well?
@@ -78,7 +79,7 @@
 		- install - cacheAll all resources, and when all caches complete, set _REFRESH=0 again and _LASTUPDATE=`date`
 			- will install be called? how to force reload serviceworker? check docs
 	- main.js when _REFRESH=0, show notice and force reload page
-- also, check that app does not lose data over serveral days, before using it in production...
++ also, check that app does not lose data over serveral days, before using it in production...
 - also, check in several different browsers on multiple devices
 - what if web page is open in multiple tabs, and edited in non-newest?
   have safety like hidden HTML element with timestamp, and copy in DB, and refuse to add/update/delete if they do not match?
@@ -86,4 +87,3 @@
 - on new or edit task, shift focus to details form
 - sort task list by date+start_time (newest on top)
 - show red message below or above table when item deleted, and/or color row which was edited/created last
-- new hours - stavi datum i vrijeme trenutno

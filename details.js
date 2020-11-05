@@ -27,7 +27,9 @@ const elemFormDetails	= document.getElementById('form_details');
 const elemFormDetailId		= document.getElementById('details_id');
 const elemFormDetailDate	= document.getElementById('details_date');
 const elemFormDetailStart	= document.getElementById('details_start');
+const elemFormDetailStartNow	= document.getElementById('btn_starttime_now');
 const elemFormDetailEnd		= document.getElementById('details_end');
+const elemFormDetailEndNow	= document.getElementById('btn_endtime_now');
 const elemFormDetailBreak	= document.getElementById('details_break');
 const elemFormDetailNotes	= document.getElementById('details_notes');
 
@@ -80,6 +82,16 @@ function getCurrentTime() {
   return z2(d.getHours()) + ':' + z2(d.getMinutes());
 }
 
+/* event: set begin time to current time */
+function task_set_now_begin() {
+  elemFormDetailStart.value = getCurrentTime();
+}
+
+/* event: set end time to current time */
+function task_set_now_end() {
+  elemFormDetailEnd.value = getCurrentTime();
+}
+
 /* event: creates a new empty task */
 function task_new() {
   if (isFormShown()) { return false; }
@@ -87,7 +99,7 @@ function task_new() {
   details_form_clear();
   elemDetailsId.value = -1;			// indicate new Task
   elemFormDetailDate.value = getCurrentDate();
-  elemFormDetailStart.value = getCurrentTime()
+  elemFormDetailStart.value = getCurrentTime();
   elemFormDetailEnd.value = '17:00';
 
   details_form_show(true, false);		// has Cancel button

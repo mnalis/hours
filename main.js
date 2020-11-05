@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.21';
+const ver = 'v1.22';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -38,14 +38,16 @@ function force_refresh() {
 }
 
 /* init input field handlers */
-elemFormMonth.addEventListener	('submit', add_month, false);		// create new month category
-elemMonthList.addEventListener	('change', change_default_month);	// select month category
-elemTableList.addEventListener	('click',  task_edit);			// edit any task
-elemNewTask.addEventListener	('click',  task_new);			// start creating new task
-elemCancelTask.addEventListener	('click',  task_cancel);		// cancel task
-elemDeleteTask.addEventListener	('click',  task_delete);		// delete task
-elemFormDetails.addEventListener('submit', task_done, false);		// finish creating/updating task
-elemRefresh.addEventListener	('click',  force_refresh); 		// app refresh/upgrade
+elemFormMonth.addEventListener		('submit', add_month, false);		// create new month category
+elemMonthList.addEventListener		('change', change_default_month);	// select month category
+elemTableList.addEventListener		('click',  task_edit);			// edit any task
+elemFormDetailStartNow.addEventListener	('click',  task_set_now_begin);		// set begin time to now() via button
+elemFormDetailEndNow.addEventListener	('click',  task_set_now_end);		// set end time to now() via button
+elemNewTask.addEventListener		('click',  task_new);			// start creating new task
+elemCancelTask.addEventListener		('click',  task_cancel);		// cancel task
+elemDeleteTask.addEventListener		('click',  task_delete);		// delete task
+elemFormDetails.addEventListener	('submit', task_done, false);		// finish creating/updating task
+elemRefresh.addEventListener		('click',  force_refresh); 		// app refresh/upgrade
 elemRefresh.disabled = false;
  
 /* try to enable persistent storage */

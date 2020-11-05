@@ -28,3 +28,7 @@ ul {
 #sec_details, #sec_list {
   display: none;
 }
+
+.clickable {
+       cursor: pointer;
+}
