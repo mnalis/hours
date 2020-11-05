@@ -86,3 +86,4 @@
 - on new or edit task, shift focus to details form
 - sort task list by date+start_time (newest on top)
 - show red message below or above table when item deleted, and/or color row which was edited/created last
+- new hours - stavi datum i vrijeme trenutno

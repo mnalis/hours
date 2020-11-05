@@ -74,6 +74,10 @@ function task_new() {
 
   details_form_clear();
   elemDetailsId.value = -1;			// indicate new Task
+  var d = new Date();
+  elemFormDetailDate.value = d.toJSON().substr(0,10);
+  elemFormDetailStart.value = d.toJSON().substr(11,5);
+  elemFormDetailEnd.value = '17:00';
 
   details_form_show(true, false);		// has Cancel button
   return true;
