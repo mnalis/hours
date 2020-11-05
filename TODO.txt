@@ -36,9 +36,8 @@
 	- move task from one month to another
 	- update start time (with "set to now()" button)
 	- update end time (with "set to now()" button)
-	- update breaks
-	- update in which month it is
-	- UPDATE / CANCEL / DELETE buttons (disable CANCEL if new event)
+	+ update breaks
+	+ UPDATE / CANCEL / DELETE buttons (disable DELETE if new event)
 
 +? show totals for current month (with and w/o breaks)
 - default focus on new task button?
@@ -84,3 +83,5 @@
 - what if web page is open in multiple tabs, and edited in non-newest?
   have safety like hidden HTML element with timestamp, and copy in DB, and refuse to add/update/delete if they do not match?
 - CSS hover change color of row, to indicate we can edit it... but what to do on mobile?
+- on new or edit task, shift focus to details form
+- sort task list by date+start_time (newest on top)

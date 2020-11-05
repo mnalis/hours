@@ -40,7 +40,7 @@ function details_form_clear() {
   elemFormDetailDate.value = '';
   elemFormDetailStart.value = '';
   elemFormDetailEnd.value = '';
-  elemFormDetailBreak.value = '';
+  elemFormDetailBreak.value = '00:00';
   elemFormDetailNotes.value = '';
   elemCancelTask.disabled = true;
   elemDeleteTask.disabled = true;
@@ -68,7 +68,7 @@ function isFormShown() {
   }
 }
 
-/* creates a new empty task */
+/* event: creates a new empty task */
 function task_new() {
   if (isFormShown()) { return false; }
 
@@ -79,7 +79,7 @@ function task_new() {
   return true;
 }
 
-/* edits existing task */
+/* event: edits existing task */
 function task_edit(evt) {
   if (isFormShown()) { return false; }
   
@@ -100,21 +100,23 @@ function task_edit(evt) {
 }
 
 
-/* cancels current task */
+/* event: cancels current task */
 function task_cancel() {
   details_form_clear();
   details_form_hide();
 }
 
-/* deletes current task */
+/* event: deletes current task */
 function task_delete() {
   if (confirm ('Really DELETE?')) {
     const id = elemFormDetailId.value;
     const m = get_default_month_DB();
+    let tasks = get_tasks_month_DB(m);
 
-    alert ('FIXME: delete not implemented yet, id='+id);
+    console.debug ('Deleting task '+id, tasks);
+    tasks.splice(id,1);
+    set_tasks_month_DB(m, tasks);
 
-    details_form_clear();
     details_form_hide();
     show_list(m);
     return true;
@@ -122,7 +124,7 @@ function task_delete() {
   return false;
 }
 
-/* add new task details to DB */
+/* event: add new task details to DB */
 function task_done(evt) {
   evt.preventDefault();			// or we'll try to GET/POST the Form...
 
