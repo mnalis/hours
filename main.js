@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.23';
+const ver = 'v1.24';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -55,7 +55,7 @@ function initiate_download(filename, text) {
 function backup_data() {
   console.debug ('Starting data backup');
   const filename = "hours_backup.json";	// FIXME add date/timestamp in filename
-  const content_json = JSON.stringify(JSON.stringify(localStorage));
+  const content_json = JSON.stringify(localStorage);
 
   initiate_download (filename, content_json);
 }
@@ -64,14 +64,13 @@ function backup_data() {
 function import_data(txt) {
   console.debug ('Starting data import');
 
-  document.getElementById('fixme1').innerHTML = txt;
-
-  const data = JSON.parse(JSON.parse(txt));
+  const data = JSON.parse(txt);
   Object.keys(data).forEach(function (k) {
     localStorage.setItem(k, data[k]);
   });
 
-  alert("FIXME WIP - import_data()");
+  // FIXME clear import form data
+  show_list(get_default_month_DB());	// FIXME extract to refresh_data() ?
 }
 
 function fixme_upload(event) {

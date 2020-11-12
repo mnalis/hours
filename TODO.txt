@@ -1,6 +1,6 @@
 - docs - it keeps data locally only
 	- optional sync? https://developers.google.com/web/updates/2015/12/background-sync
-- add option for export/import data
++? add option for export/import data
 + option to refresh, but run offline-first
 - better icons images
 -? htaccess caching permanent for icons and version resorces etc.
@@ -87,5 +87,6 @@
 - on new or edit task, shift focus to details form
 - sort task list by date+start_time (newest on top)
 - show red message below or above table when item deleted, and/or color row which was edited/created last
+	- also when import/backup finishes?
 - break time make as number field with step=5? but still format display and allow manual entry as MM:SS
 - clickable "set time to now" -- make button or a, and style that and prevent default action. for accessability https://stackoverflow.com/a/4442260/2600099
