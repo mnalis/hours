@@ -20,14 +20,15 @@
 
 'use strict';
 
-const ver = 'v1.22';
+const ver = 'v1.23';
 
 console.debug ('main.js', ver, 'starting')
 
 const elemVersion = document.getElementById('ver');
 const elemRefresh = document.getElementById('btn_refresh_app');
+const elemBackup = document.getElementById('btn_backup');
 
-/* creates a new task */
+/* refreshes App / upgrades PWA */
 function force_refresh() {
   console.debug ('Starting force_refresh');
   elemVersion.innerHTML = 'Updating&hellip;';
@@ -35,6 +36,27 @@ function force_refresh() {
   elemVersion.innerHTML = ver;
   console.debug ('Finishing force_refresh with window.reload()');
   window.location.reload(true);
+}
+
+/* initiale download */
+function initiate_download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+/* exports LocalStorage for download */
+function backup_data() {
+  console.debug ('Starting data backup');
+  const filename = "hours_backup.json";	// FIXME add date/timestamp in filename
+  const content_json = JSON.stringify(JSON.stringify(localStorage));
+
+  initiate_download (filename, content_json);
 }
 
 /* init input field handlers */
@@ -47,6 +69,7 @@ elemNewTask.addEventListener		('click',  task_new);			// start creating new task
 elemCancelTask.addEventListener		('click',  task_cancel);		// cancel task
 elemDeleteTask.addEventListener		('click',  task_delete);		// delete task
 elemFormDetails.addEventListener	('submit', task_done, false);		// finish creating/updating task
+elemBackup.addEventListener		('click',  backup_data); 		// export/backup full localStorage
 elemRefresh.addEventListener		('click',  force_refresh); 		// app refresh/upgrade
 elemRefresh.disabled = false;
  
