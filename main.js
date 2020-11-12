@@ -63,7 +63,14 @@ function backup_data() {
 /* import previously exported LocalStorage */
 function import_data(txt) {
   console.debug ('Starting data import');
+
   document.getElementById('fixme1').innerHTML = txt;
+
+  const data = JSON.parse(JSON.parse(txt));
+  Object.keys(data).forEach(function (k) {
+    localStorage.setItem(k, data[k]);
+  });
+
   alert("FIXME WIP - import_data()");
 }
 
