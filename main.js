@@ -27,6 +27,7 @@ console.debug ('main.js', ver, 'starting')
 const elemVersion = document.getElementById('ver');
 const elemRefresh = document.getElementById('btn_refresh_app');
 const elemBackup = document.getElementById('btn_backup');
+const elemImport = document.getElementById('import_file_field'); // FIXME btn_import, import_file_field
 
 /* refreshes App / upgrades PWA */
 function force_refresh() {
@@ -59,6 +60,27 @@ function backup_data() {
   initiate_download (filename, content_json);
 }
 
+/* import previously exported LocalStorage */
+function import_data(txt) {
+  console.debug ('Starting data import');
+  document.getElementById('fixme1').innerHTML = txt;
+  alert("FIXME WIP - import_data()");
+}
+
+function fixme_upload(event) {
+  const file = event.target.files[0];
+
+  var reader = new FileReader();  
+  reader.onload = function(readerEvent) {
+    const uri=readerEvent.target.result;
+    fetch(uri)
+      .then(res => res.blob())
+      .then(blob => blob.text())
+      .then(import_data);
+  }
+  reader.readAsDataURL(file);
+}
+
 /* init input field handlers */
 elemFormMonth.addEventListener		('submit', add_month, false);		// create new month category
 elemMonthList.addEventListener		('change', change_default_month);	// select month category
@@ -70,6 +92,7 @@ elemCancelTask.addEventListener		('click',  task_cancel);		// cancel task
 elemDeleteTask.addEventListener		('click',  task_delete);		// delete task
 elemFormDetails.addEventListener	('submit', task_done, false);		// finish creating/updating task
 elemBackup.addEventListener		('click',  backup_data); 		// export/backup full localStorage
+elemImport.addEventListener		('change', fixme_upload, false);	// import backup of localStorage
 elemRefresh.addEventListener		('click',  force_refresh); 		// app refresh/upgrade
 elemRefresh.disabled = false;
  
