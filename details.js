@@ -58,6 +58,8 @@ function details_form_show(hasCancel, hasDelete) {
   elemSecDetails.style.display = 'block';	// show details form
   elemCancelTask.disabled = !hasCancel;
   elemDeleteTask.disabled = !hasDelete;
+  elemCancelTask.focus();
+  elemFormDetailNotes.focus();
 }
 
 /* safety check - abort opening new form, is old one is not closed first! */
