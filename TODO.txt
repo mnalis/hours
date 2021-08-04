@@ -69,7 +69,6 @@
 - add "break" as last parameter in new task, so we can use "enter" to submit form (and it is less important)
 - update README.md
 - CSS & HTML styling
-- sort task table
 - better name than "task" for strings / variables / functions?? ("event"? "hour"? "billed"?)
 - remove/comment-out console.debug etc debugging at the end
 - last updated string on home (collapsable about?) and utf8 refresh button
@@ -85,7 +84,6 @@
   have safety like hidden HTML element with timestamp, and copy in DB, and refuse to add/update/delete if they do not match?
 - CSS hover change color of row, to indicate we can edit it... but what to do on mobile?
 - on new or edit task, shift focus to details form
-- sort task list by date+start_time (newest on top)
 - show red message below or above table when item deleted, and/or color row which was edited/created last
 	- also when import/backup finishes?
 - break time make as number field with step=5? but still format display and allow manual entry as MM:SS

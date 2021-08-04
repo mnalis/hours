@@ -64,9 +64,9 @@ function set_months_DB(months) {
 }
 
 
-/* return array of tasks for specfied month from DB */
+/* return sorted array of tasks for specfied month from DB */
 function get_tasks_month_DB(month) {
-  return JSON.parse(getFromDB(KEY_MONTH_PREFIX+month)) || [];
+  return JSON.parse(getFromDB(KEY_MONTH_PREFIX+month)).sort(function(a, b){return a[0]+a[1] < b[0]+b[1] ? -1 : a[0]+a[1] > b[0]+b[1] ? 1 : 0}) || [];
 }
 
 /* save array of tasks for specified month to DB */
