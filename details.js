@@ -60,8 +60,8 @@ function details_form_show(hasCancel, hasDelete) {
   elemCancelTask.disabled = !hasCancel;
   elemDeleteTask.disabled = !hasDelete;
   elemNewTask.disabled = true;
-  elemCancelTask.focus();
   elemFormDetailNotes.focus();
+  elemCancelTask.scrollIntoView(false);;
 }
 
 /* safety check - abort opening new form, is old one is not closed first! */
