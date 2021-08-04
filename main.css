@@ -22,8 +22,31 @@ table, th, td, caption {
   border: 1px solid black;
 }
 
-ul {
+ol {
   list-style-type: none;
+}
+
+form ol li {
+  display: table-row;
+  width: 100%;
+}
+
+form ol li label, form ol li input, for ol li textarea  {
+  display: table-cell;
+  margin-bottom: 1em;
+  padding-right: 0.2em;
+}
+
+form ol li input{
+  width: 10em;
+}
+
+form ol li textarea {
+  width: 100%;
+}
+
+form ol li span {
+  padding-left: 0.5em;
 }
 
 #sec_details, #sec_list {

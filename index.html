@@ -100,7 +100,7 @@
                 <div id="date">
                         <form id="form_details">
                             <input type="hidden" id="details_id" value="-2">
-                            <ul>
+                            <ol>
                                 <li>
                                         <label for="date_time">Date</label>
                                                 <input type="date" id="details_date" placeholder="YYYY-MM-DD"  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" minlength="10" maxlength="10">
@@ -117,13 +117,13 @@
                                 </li>
                                 <li>
                                         <label for="subject">Notes</label>
-                                                <textarea id="details_notes" placeholder="Please enter task decription..."></textarea>
+                                                <textarea id="details_notes" placeholder="Please enter task decription..." required rows=4></textarea>
                                 </li>
                                 <li>
                                         <label for="breaktime">Break</label>
                                                 <input type="text" id="details_break" placeholder="00:30" value="00:00" required pattern="[0-9]{2}:[0-9]{2}" minlength="5" maxlength="5">
                                 </li>
-                            </ul>
+                            </ol>
                             <div>
                                     <button type="submit">Done</button>
                                     <button type="button" id="btn_details_cancel" disabled>Cancel</button>
