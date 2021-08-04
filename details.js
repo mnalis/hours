@@ -63,7 +63,7 @@ function details_form_show(hasCancel, hasDelete) {
   elemFormDetailNotes.focus();
       setTimeout(function () {
         elemCancelTask.scrollIntoView(false);
-    }, 50);
+    }, 150);
 }
 
 /* safety check - abort opening new form, is old one is not closed first! */
