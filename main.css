@@ -30,16 +30,16 @@ ol {
   margin: 0 0 0 0.5em;
 }
 
-form ol li {
+#form_details ol li {
   display: table-row;
 }
 
-form label {
+#form_details label {
   font-size: x-large;
   vertical-align: middle;
 }
 
-form label, form input, form textarea  {
+#form_details label, #form_details input, #form_details textarea  {
   display: table-cell;
   /*border: 1px solid blue;*/
   font-size: x-large;
@@ -47,15 +47,15 @@ form label, form input, form textarea  {
   margin: 0.5em;
 }
 
-form input{
+#form_details input{
   width: 8em;
 }
 
-form textarea {
+#form_details textarea {
   width: 90%;
 }
 
-form span {
+#form_details span {
   font-size: x-large;
   padding-left: 0.5em;
 }
