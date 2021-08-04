@@ -51,6 +51,7 @@ function details_form_clear() {
 /* hides the details form */
 function details_form_hide() {
   elemSecDetails.style.display = 'none';	// hide details form again
+  elemNewTask.disabled = false;
 }
 
 /* show the details form */
@@ -58,6 +59,7 @@ function details_form_show(hasCancel, hasDelete) {
   elemSecDetails.style.display = 'block';	// show details form
   elemCancelTask.disabled = !hasCancel;
   elemDeleteTask.disabled = !hasDelete;
+  elemNewTask.disabled = true;
   elemCancelTask.focus();
   elemFormDetailNotes.focus();
 }

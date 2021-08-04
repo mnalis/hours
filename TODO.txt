@@ -87,5 +87,3 @@
 - clickable "set time to now" -- make button or a, and style that and prevent default action. for accessability https://stackoverflow.com/a/4442260/2600099
 - refresh doesn't work in lineageOS browser? see stackexchange discussion about that what works in which browser for reloading service worker and forcing data refresh...
 - responsive CSS - mobile remove columns if too small
-- dok se editira task (bilo new bilo edit), da je 'New task' button disabled
-  (i da se reenablea kada se forma zatvori na bilo koji nacin)
