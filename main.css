@@ -23,29 +23,40 @@ table, th, td, caption {
 }
 
 ol {
+  display: table;
   list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 0 0.5em;
 }
 
 form ol li {
   display: table-row;
-  width: 100%;
 }
 
-form ol li label, form ol li input, for ol li textarea  {
+form label {
+  font-size: x-large;
+  vertical-align: middle;
+}
+
+form label, form input, form textarea  {
   display: table-cell;
-  margin-bottom: 1em;
-  padding-right: 0.2em;
+  /*border: 1px solid blue;*/
+  font-size: x-large;
+  vertical-align: middle;
+  margin: 0.5em;
 }
 
-form ol li input{
-  width: 10em;
+form input{
+  width: 8em;
 }
 
-form ol li textarea {
-  width: 100%;
+form textarea {
+  width: 90%;
 }
 
-form ol li span {
+form span {
+  font-size: x-large;
   padding-left: 0.5em;
 }
 
