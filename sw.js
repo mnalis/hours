@@ -34,13 +34,13 @@ self.addEventListener('install', function(event) {
       return cache.addAll(
         [
             '/',
-            '/db.js',
-            '/details.js',
-            '/list.js',
-            '/months.js',
-            '/main.js',
-            '/main.css',
-            '/hours-128.png',
+            'db.js',
+            'details.js',
+            'list.js',
+            'months.js',
+            'main.js',
+            'main.css',
+            'hours-128.png',
         ]
       );
     })

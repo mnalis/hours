@@ -111,8 +111,9 @@ if (navigator.storage && navigator.storage.persist) {
 
 
 /* register Service Worker */
+/* FIXME this fails on file:// URL, but script seems to continue to work */
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+  navigator.serviceWorker.register('sw.js');
 } else {
   console.error('ABORT: service workers not supported');
 }
