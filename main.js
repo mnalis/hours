@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.29c';
+const ver = 'v1.30';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -87,6 +87,8 @@ function fixme_upload(event) {
   reader.readAsDataURL(file);
 }
 
+elemVersion.innerHTML = 'Starting up...';
+
 /* init input field handlers */
 elemFormMonth.addEventListener		('submit', add_month, false);		// create new month category
 elemMonthList.addEventListener		('change', change_default_month);	// select month category
@@ -101,6 +103,8 @@ elemBackup.addEventListener		('click',  backup_data); 		// export/backup full lo
 elemImport.addEventListener		('change', fixme_upload, false);	// import backup of localStorage
 elemRefresh.addEventListener		('click',  force_refresh); 		// app refresh/upgrade
 elemRefresh.disabled = false;
+
+elemVersion.innerHTML = 'Checking storage...';
  
 /* try to enable persistent storage */
 if (navigator.storage && navigator.storage.persist) {
@@ -110,6 +114,8 @@ if (navigator.storage && navigator.storage.persist) {
 }
 
 
+elemVersion.innerHTML = 'Checking Worker...';
+
 /* register Service Worker */
 /* FIXME this fails on file:// URL, but script seems to continue to work */
 if ('serviceWorker' in navigator) {
@@ -117,6 +123,8 @@ if ('serviceWorker' in navigator) {
 } else {
   console.error('ABORT: service workers not supported');
 }
+
+elemVersion.innerHTML = 'Initializing main...';
 
 /* show current list of months on startup */
 showMonths();
