@@ -15,6 +15,7 @@ button[disabled] {
 button {
   margin-bottom: 1em;
   padding: 1em;
+  border-radius: 0.5em;
 }
 
 table, th, td, caption {
