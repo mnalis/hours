@@ -94,7 +94,7 @@ elemVersion.innerHTML = 'Starting up...';
 
 /* init input field handlers */
 elemFormMonth.addEventListener		('submit', add_month, false);		// create new month category
-elemMonthList.addEventListener		('change', change_default_month);	// select month category
+elemCurMonthList.addEventListener	('change', change_default_month);	// select month category
 elemTableList.addEventListener		('click',  task_edit);			// edit any task
 elemFormDetailStartNow.addEventListener	('click',  task_set_now_begin);		// set begin time to now() via button
 elemFormDetailEndNow.addEventListener	('click',  task_set_now_end);		// set end time to now() via button

@@ -22,7 +22,7 @@
 
 const elemMonthValue = document.getElementById('month_input');
 const elemFormMonth = document.getElementById('form_month');
-const elemMonthList = document.getElementById('month_list');
+const elemCurMonthList = document.getElementById('cur_month_list');
 const elemSelectedMonth = document.getElementById('selected_month');
 
 
@@ -41,7 +41,7 @@ function build_months_list(default_month) {
 /* show list of months in DB */
 function showMonths() {
   const last_used = get_default_month_DB();
-  elemMonthList.innerHTML = build_months_list(last_used);
+  elemCurMonthList.innerHTML = build_months_list(last_used);
 }
 
 
@@ -76,7 +76,7 @@ function make_default_month(month) {
 
 /* update to newly selected default month */
 function change_default_month() {
-  const m = elemMonthList.value;	/* selected element in list */
+  const m = elemCurMonthList.value;	/* selected element in list */
   if (!m) return;
   make_default_month(m);
 }
