@@ -128,6 +128,7 @@ elemVersion.innerHTML = 'Initializing main...';
 
 /* show current list of months on startup */
 showMonths();
+elemVersion.innerHTML = 'Setting up default...';
 change_default_month();
 
 /* update version in HTML */
