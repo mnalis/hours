@@ -33,6 +33,9 @@ const elemFormDetailEndNow	= document.getElementById('btn_endtime_now');
 const elemFormDetailBreak	= document.getElementById('details_break');
 const elemFormDetailNotes	= document.getElementById('details_notes');
 
+const elemNewMonthListDiv	= document.getElementById('new_month_list_div');
+const elemNewMonthList		= document.getElementById('new_month_list');
+
 const elemCancelTask		= document.getElementById('btn_details_cancel');
 const elemDeleteTask		= document.getElementById('btn_details_delete');
 const elemMoveTask		= document.getElementById('btn_details_moveto');
@@ -48,11 +51,13 @@ function details_form_clear() {
   elemCancelTask.disabled = true;
   elemDeleteTask.disabled = true;
   elemMoveTask.disabled = true;
+  elemNewMonthListDiv.style.display = 'none';
 }
 
 /* hides the details form */
 function details_form_hide() {
   elemSecDetails.style.display = 'none';	// hide details form again
+  elemNewMonthListDiv.style.display = 'none';
   elemNewTask.disabled = false;
 }
 
@@ -178,18 +183,40 @@ function task_delete() {
   return false;
 }
 
-/* event: moves current task to different month category */
+/* event: moves current task to different month category (show dropdown) */
 function task_move() {
-  alert ("FIXME: WIP");
-  return false;
+  const cur_month = get_default_month_DB();
+  elemNewMonthList.innerHTML = build_months_list(cur_month);
+
+  elemNewMonthListDiv.style.display = 'table-row';
+  elemMoveTask.disabled = true;
+
+  return true;
 }
 
 /* event: add new task details to DB */
 function task_done(evt) {
   evt.preventDefault();			// or we'll try to GET/POST the Form...
 
-  const id = elemFormDetailId.value;
-  const m = get_default_month_DB();
+  const new_month = elemNewMonthList.value;
+  let id = elemFormDetailId.value;
+  let m = get_default_month_DB();
+
+  if (new_month && new_month != m) { /* user requested moving current task to new_month) */
+    console.debug ('Moving task ' + id + ' from ' + m + ' to ' + new_month);
+
+    /* firstly, remove task from current month */
+    let old_tasks = get_tasks_month_DB(m);
+    console.debug ('Deleting moved task '+id, old_tasks);
+    old_tasks.splice(id,1);
+    set_tasks_month_DB(m, old_tasks);
+
+    /* secondly, imitate new task creation in new month*/
+    m = new_month;
+    make_default_month(m);
+    id = -1;
+  }
+
   let tasks = get_tasks_month_DB(m);
 
   if (id == -1) {

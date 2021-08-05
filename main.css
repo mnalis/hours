@@ -39,7 +39,7 @@ ol {
   vertical-align: middle;
 }
 
-#form_details label, #form_details input, #form_details textarea  {
+#form_details label, #form_details input, #form_details select, #form_details textarea  {
   display: table-cell;
   /*border: 1px solid blue;*/
   font-size: x-large;
