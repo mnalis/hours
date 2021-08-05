@@ -45,7 +45,7 @@ function addToDB(key, val) {
 
 
 /* set default month to use */
-function set_default_month_DB(month) {
+function _set_default_month_DB(month) {
   return addToDB(KEY_LASTMONTH, month);
 }
 /* returns default month to use */

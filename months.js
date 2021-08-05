@@ -70,7 +70,7 @@ function add_month(evt) {
 function make_default_month(month) {
   console.debug('changing default month to', month);
   elemSelectedMonth.innerHTML = month;
-  set_default_month_DB(month);
+  _set_default_month_DB(month);
   show_list(month);
 }
 
