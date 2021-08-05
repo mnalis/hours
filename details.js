@@ -89,11 +89,11 @@ function isFormShown() {
  */
 function get_hacked_datetime() {
   function changeTimezone(date, ianatz) {
-    var invdate = new Date(date.toLocaleString('en-US', { timeZone: ianatz }));
-    var diff = date.getTime() - invdate.getTime();
+    const invdate = new Date(date.toLocaleString('en-US', { timeZone: ianatz }));
+    const diff = date.getTime() - invdate.getTime();
     return new Date(date.getTime() - diff);
   }
-  var now = new Date();
+  let now = new Date();
 
   if (now.getTimezoneOffset() == 0 && navigator.userAgent.includes('IceCat/68')) {
     now = changeTimezone(now, 'Europe/Zagreb');		// FIXME: Hardcoded TZ

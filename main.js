@@ -41,7 +41,7 @@ function force_refresh() {
 
 /* initiale download */
 function initiate_download(filename, text) {
-  var element = document.createElement('a');
+  const element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
 
@@ -79,7 +79,7 @@ function import_data(txt) {
 function import_upload_file(event) {
   const file = event.target.files[0];
 
-  var reader = new FileReader();  
+  const reader = new FileReader();
   reader.onload = function(readerEvent) {
     const uri=readerEvent.target.result;
     fetch(uri)

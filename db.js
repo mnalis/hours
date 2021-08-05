@@ -66,7 +66,7 @@ function set_months_DB(months) {
 
 /* return sorted array of tasks for specfied month from DB */
 function get_tasks_month_DB(month) {
-  var m = JSON.parse(getFromDB(KEY_MONTH_PREFIX+month)) || [];
+  const m = JSON.parse(getFromDB(KEY_MONTH_PREFIX+month)) || [];
   return m.sort(function(a, b){return a[0]+a[1] < b[0]+b[1] ? -1 : a[0]+a[1] > b[0]+b[1] ? 1 : 0});
 }
 
