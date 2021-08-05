@@ -93,3 +93,4 @@
   - clicking on time, invoking adndroid time selector and selecting
     different time does not update form display?
   - even clicking "MoveTo" and choosing different month does not update display?
+- import JSON remove extra unneeded buttons?
