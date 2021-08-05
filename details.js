@@ -35,6 +35,7 @@ const elemFormDetailNotes	= document.getElementById('details_notes');
 
 const elemCancelTask		= document.getElementById('btn_details_cancel');
 const elemDeleteTask		= document.getElementById('btn_details_delete');
+const elemMoveTask		= document.getElementById('btn_details_moveto');
 
 /* clears the form data */
 function details_form_clear() {
@@ -46,6 +47,7 @@ function details_form_clear() {
   elemFormDetailNotes.value = '';
   elemCancelTask.disabled = true;
   elemDeleteTask.disabled = true;
+  elemMoveTask.disabled = true;
 }
 
 /* hides the details form */
@@ -55,10 +57,11 @@ function details_form_hide() {
 }
 
 /* show the details form */
-function details_form_show(hasCancel, hasDelete) {
+function details_form_show(hasCancel, hasDelete, hasMove) {
   elemSecDetails.style.display = 'block';	// show details form
   elemCancelTask.disabled = !hasCancel;
   elemDeleteTask.disabled = !hasDelete;
+  elemMoveTask.disabled = !hasMove;
   elemNewTask.disabled = true;
   elemFormDetailNotes.focus();
       setTimeout(function () {
@@ -126,7 +129,7 @@ function task_new() {
   elemFormDetailStart.value = getCurrentTime();
   elemFormDetailEnd.value = '17:00';
 
-  details_form_show(true, false);		// has Cancel button
+  details_form_show(true, false, false);	// has Cancel button
   return true;
 }
 
@@ -146,7 +149,7 @@ function task_edit(evt) {
   elemFormDetailBreak.value = min_to_human(calc_minutes(td[1].innerHTML, td[2].innerHTML, td[3].innerHTML));	// calculte break as start-end-time_worked
   elemFormDetailNotes.value = td[4].innerHTML;
 
-  details_form_show(true, true);		// has Cancel and Delete buttons
+  details_form_show(true, true, true);		// has Cancel, Delete and MoveTo buttons
   return true;
 }
 
@@ -172,6 +175,12 @@ function task_delete() {
     show_list(m);
     return true;
   }
+  return false;
+}
+
+/* event: moves current task to different month category */
+function task_move() {
+  alert ("FIXME: WIP");
   return false;
 }
 

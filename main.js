@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.33';
+const ver = 'v1.34';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -101,6 +101,7 @@ elemFormDetailEndNow.addEventListener	('click',  task_set_now_end);		// set end 
 elemNewTask.addEventListener		('click',  task_new);			// start creating new task
 elemCancelTask.addEventListener		('click',  task_cancel);		// cancel task
 elemDeleteTask.addEventListener		('click',  task_delete);		// delete task
+elemMoveTask.addEventListener		('click',  task_move);			// move task to different month category
 elemFormDetails.addEventListener	('submit', task_done, false);		// finish creating/updating task
 elemBackup.addEventListener		('click',  backup_data); 		// export/backup full localStorage
 elemImport.addEventListener		('change', import_upload_file, false);	// import backup of localStorage
