@@ -51,23 +51,24 @@ function details_form_clear() {
   elemCancelTask.disabled = true;
   elemDeleteTask.disabled = true;
   elemMoveTask.disabled = true;
-  elemNewMonthListDiv.style.display = 'none';
 }
 
 /* hides the details form */
 function details_form_hide() {
   elemSecDetails.style.display = 'none';	// hide details form again
-  elemNewMonthListDiv.style.display = 'none';
   elemNewTask.disabled = false;
 }
 
 /* show the details form */
 function details_form_show(hasCancel, hasDelete, hasMove) {
-  elemSecDetails.style.display = 'block';	// show details form
   elemCancelTask.disabled = !hasCancel;
   elemDeleteTask.disabled = !hasDelete;
   elemMoveTask.disabled = !hasMove;
+
   elemNewTask.disabled = true;
+  elemNewMonthListDiv.style.display = 'none';
+
+  elemSecDetails.style.display = 'block';	// show details form
   elemFormDetailNotes.focus();
       setTimeout(function () {
         elemCancelTask.scrollIntoView(false);
@@ -188,8 +189,8 @@ function task_move() {
   const cur_month = get_default_month_DB();
   elemNewMonthList.innerHTML = build_months_list(cur_month);
 
-  elemNewMonthListDiv.style.display = 'table-row';
   elemMoveTask.disabled = true;
+  elemNewMonthListDiv.style.display = 'table-row';
 
   return true;
 }
