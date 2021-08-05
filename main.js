@@ -20,7 +20,7 @@
 
 'use strict';
 
-const ver = 'v1.31';
+const ver = 'v1.32';
 
 console.debug ('main.js', ver, 'starting')
 
@@ -65,15 +65,18 @@ function import_data(txt) {
   console.debug ('Starting data import');
 
   const data = JSON.parse(txt);
+  localStorage.clear();
   Object.keys(data).forEach(function (k) {
     localStorage.setItem(k, data[k]);
   });
 
-  // FIXME clear import form data
-  show_list(get_default_month_DB());	// FIXME extract to refresh_data() ?
+  elemVersion.innerHTML = "Refreshing...";
+  console.debug ('Data import complete, refreshing...');
+  window.location.reload(true);
 }
 
-function fixme_upload(event) {
+/* file to import has been selected */
+function import_upload_file(event) {
   const file = event.target.files[0];
 
   var reader = new FileReader();  
@@ -100,7 +103,7 @@ elemCancelTask.addEventListener		('click',  task_cancel);		// cancel task
 elemDeleteTask.addEventListener		('click',  task_delete);		// delete task
 elemFormDetails.addEventListener	('submit', task_done, false);		// finish creating/updating task
 elemBackup.addEventListener		('click',  backup_data); 		// export/backup full localStorage
-elemImport.addEventListener		('change', fixme_upload, false);	// import backup of localStorage
+elemImport.addEventListener		('change', import_upload_file, false);	// import backup of localStorage
 elemRefresh.addEventListener		('click',  force_refresh); 		// app refresh/upgrade
 elemRefresh.disabled = false;
 
