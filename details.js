@@ -76,15 +76,33 @@ function isFormShown() {
   }
 }
 
+/* checks if hacking TimeZone offset is needed for IceCat mobile which fakes user is always UTC
+   see https://unix.stackexchange.com/questions/563249/gnu-icecat-always-on-utc#comment1158171_581749
+ */
+function get_hacked_datetime() {
+  function changeTimezone(date, ianatz) {
+    var invdate = new Date(date.toLocaleString('en-US', { timeZone: ianatz }));
+    var diff = date.getTime() - invdate.getTime();
+    return new Date(date.getTime() - diff);
+  }
+  var now = new Date();
+
+  if (now.getTimezoneOffset() == 0 && navigator.userAgent.includes('IceCat/68')) {
+    now = changeTimezone(now, 'Europe/Zagreb');		// FIXME: Hardcoded TZ
+  }
+
+  return now;
+}
+
 /* returns current date in YYYY-MM-DD format suitable for HTML5 date input field */
 function getCurrentDate() {
-  const d = new Date();
+  const d = get_hacked_datetime();
   return d.getFullYear() + '-' + z2(d.getMonth()+1) + '-' + z2(d.getDate()); 
 }
 
 /* returns current time in HH:MM format suitable for HTML5 time input field */
 function getCurrentTime() {
-  const d = new Date();
+  const d = get_hacked_datetime();
   return z2(d.getHours()) + ':' + z2(d.getMinutes());
 }
 
